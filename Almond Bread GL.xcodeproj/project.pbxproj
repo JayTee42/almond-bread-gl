@@ -1,0 +1,363 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A81846991EAA2694003A6986 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81846981EAA2694003A6986 /* AppDelegate.swift */; };
+		A818469B1EAA2694003A6986 /* RenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A818469A1EAA2694003A6986 /* RenderViewController.swift */; };
+		A818469E1EAA2694003A6986 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A818469C1EAA2694003A6986 /* Main.storyboard */; };
+		A81846A01EAA2694003A6986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A818469F1EAA2694003A6986 /* Assets.xcassets */; };
+		A81846A31EAA2694003A6986 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A81846A11EAA2694003A6986 /* LaunchScreen.storyboard */; };
+		A81846AD1EAA2915003A6986 /* RenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81846AC1EAA2915003A6986 /* RenderView.swift */; };
+		A8CA4E451EABB1E10098AD4E /* VertexShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A8CA4E441EABB1E10098AD4E /* VertexShader.glsl */; };
+		A8CA4E471EABB1EF0098AD4E /* FragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A8CA4E461EABB1EF0098AD4E /* FragmentShader.glsl */; };
+		A8CA4E491EAC15670098AD4E /* Hue.rgba in Resources */ = {isa = PBXBuildFile; fileRef = A8CA4E481EAC13B70098AD4E /* Hue.rgba */; };
+		A8F5D5B21EAA5C6D00C6795C /* VertexData.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F5D5B11EAA5C6D00C6795C /* VertexData.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A81846951EAA2694003A6986 /* Almond Bread GL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Almond Bread GL.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A81846981EAA2694003A6986 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A818469A1EAA2694003A6986 /* RenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderViewController.swift; sourceTree = "<group>"; };
+		A818469D1EAA2694003A6986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A818469F1EAA2694003A6986 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A81846A21EAA2694003A6986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A81846A41EAA2694003A6986 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A81846AC1EAA2915003A6986 /* RenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderView.swift; sourceTree = "<group>"; };
+		A8CA4E441EABB1E10098AD4E /* VertexShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VertexShader.glsl; sourceTree = "<group>"; };
+		A8CA4E461EABB1EF0098AD4E /* FragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FragmentShader.glsl; sourceTree = "<group>"; };
+		A8CA4E481EAC13B70098AD4E /* Hue.rgba */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hue.rgba; sourceTree = "<group>"; };
+		A8E869DA1EAA595F00BDE6D7 /* VertexData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VertexData.h; sourceTree = "<group>"; };
+		A8F5D5B01EAA5C6D00C6795C /* Almond Bread GL-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Almond Bread GL-Bridging-Header.h"; sourceTree = "<group>"; };
+		A8F5D5B11EAA5C6D00C6795C /* VertexData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VertexData.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A81846921EAA2693003A6986 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A818468C1EAA2693003A6986 = {
+			isa = PBXGroup;
+			children = (
+				A81846971EAA2694003A6986 /* Almond Bread GL */,
+				A81846961EAA2694003A6986 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A81846961EAA2694003A6986 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A81846951EAA2694003A6986 /* Almond Bread GL.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A81846971EAA2694003A6986 /* Almond Bread GL */ = {
+			isa = PBXGroup;
+			children = (
+				A81846981EAA2694003A6986 /* AppDelegate.swift */,
+				A8E869DA1EAA595F00BDE6D7 /* VertexData.h */,
+				A8F5D5B11EAA5C6D00C6795C /* VertexData.m */,
+				A8CA4E481EAC13B70098AD4E /* Hue.rgba */,
+				A8CA4E441EABB1E10098AD4E /* VertexShader.glsl */,
+				A8CA4E461EABB1EF0098AD4E /* FragmentShader.glsl */,
+				A81846AC1EAA2915003A6986 /* RenderView.swift */,
+				A818469A1EAA2694003A6986 /* RenderViewController.swift */,
+				A81846AB1EAA28F1003A6986 /* UI */,
+				A81846AA1EAA28CC003A6986 /* Misc */,
+			);
+			path = "Almond Bread GL";
+			sourceTree = "<group>";
+		};
+		A81846AA1EAA28CC003A6986 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				A8F5D5B01EAA5C6D00C6795C /* Almond Bread GL-Bridging-Header.h */,
+				A81846A41EAA2694003A6986 /* Info.plist */,
+				A818469F1EAA2694003A6986 /* Assets.xcassets */,
+			);
+			name = Misc;
+			sourceTree = "<group>";
+		};
+		A81846AB1EAA28F1003A6986 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A818469C1EAA2694003A6986 /* Main.storyboard */,
+				A81846A11EAA2694003A6986 /* LaunchScreen.storyboard */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A81846941EAA2693003A6986 /* Almond Bread GL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A81846A71EAA2694003A6986 /* Build configuration list for PBXNativeTarget "Almond Bread GL" */;
+			buildPhases = (
+				A81846911EAA2693003A6986 /* Sources */,
+				A81846921EAA2693003A6986 /* Frameworks */,
+				A81846931EAA2693003A6986 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Almond Bread GL";
+			productName = "Almond Bread GL";
+			productReference = A81846951EAA2694003A6986 /* Almond Bread GL.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A818468D1EAA2693003A6986 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "TU Bergakademie Freiberg";
+				TargetAttributes = {
+					A81846941EAA2693003A6986 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 76MM9LH8FK;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A81846901EAA2693003A6986 /* Build configuration list for PBXProject "Almond Bread GL" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A818468C1EAA2693003A6986;
+			productRefGroup = A81846961EAA2694003A6986 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A81846941EAA2693003A6986 /* Almond Bread GL */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A81846931EAA2693003A6986 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A81846A31EAA2694003A6986 /* LaunchScreen.storyboard in Resources */,
+				A81846A01EAA2694003A6986 /* Assets.xcassets in Resources */,
+				A8CA4E491EAC15670098AD4E /* Hue.rgba in Resources */,
+				A8CA4E451EABB1E10098AD4E /* VertexShader.glsl in Resources */,
+				A818469E1EAA2694003A6986 /* Main.storyboard in Resources */,
+				A8CA4E471EABB1EF0098AD4E /* FragmentShader.glsl in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A81846911EAA2693003A6986 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A818469B1EAA2694003A6986 /* RenderViewController.swift in Sources */,
+				A81846991EAA2694003A6986 /* AppDelegate.swift in Sources */,
+				A81846AD1EAA2915003A6986 /* RenderView.swift in Sources */,
+				A8F5D5B21EAA5C6D00C6795C /* VertexData.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A818469C1EAA2694003A6986 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A818469D1EAA2694003A6986 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A81846A11EAA2694003A6986 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A81846A21EAA2694003A6986 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A81846A51EAA2694003A6986 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A81846A61EAA2694003A6986 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A81846A81EAA2694003A6986 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 76MM9LH8FK;
+				INFOPLIST_FILE = "Almond Bread GL/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "TUBAF.Almond-Bread-GL";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_DISABLE_SAFETY_CHECKS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Almond Bread GL/Almond Bread GL-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A81846A91EAA2694003A6986 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 76MM9LH8FK;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				INFOPLIST_FILE = "Almond Bread GL/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "TUBAF.Almond-Bread-GL";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_DISABLE_SAFETY_CHECKS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Almond Bread GL/Almond Bread GL-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A81846901EAA2693003A6986 /* Build configuration list for PBXProject "Almond Bread GL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A81846A51EAA2694003A6986 /* Debug */,
+				A81846A61EAA2694003A6986 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A81846A71EAA2694003A6986 /* Build configuration list for PBXNativeTarget "Almond Bread GL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A81846A81EAA2694003A6986 /* Debug */,
+				A81846A91EAA2694003A6986 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A818468D1EAA2693003A6986 /* Project object */;
+}
