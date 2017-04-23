@@ -11,7 +11,14 @@ import UIKit
 class RenderView: UIView, UIGestureRecognizerDelegate
 {
     //Is this a checked (debug) build?
-    private static let isCheckedBuild = true
+    private static let isCheckedBuild = false
+    
+    //Limit position and scale:
+    private static let minPosition: Double = -3
+    private static let maxPosition: Double = 3
+    
+    private static let minScale: Double = 75
+    private static let maxScale: Double = 100000000
     
     //The GLES context:
     private let eaglContext: EAGLContext
@@ -159,6 +166,9 @@ class RenderView: UIView, UIGestureRecognizerDelegate
         {
             //Mark as dirty:
             self.isDirty = true
+            
+            //Clamp:
+            self.positionX = max(RenderView.minPosition, min(self.positionX, RenderView.maxPosition))
         }
     }
     
@@ -168,16 +178,22 @@ class RenderView: UIView, UIGestureRecognizerDelegate
         {
             //Mark as dirty:
             self.isDirty = true
+            
+            //Clamp:
+            self.positionY = max(RenderView.minPosition, min(self.positionY, RenderView.maxPosition))
         }
     }
     
     //The current scale (point per Gaussian):
-    var scale: Double = 100
+    var scale: Double = RenderView.minScale
     {
         didSet
         {
             //Mark as dirty:
             self.isDirty = true
+            
+            //Clamp:
+            self.scale = max(RenderView.minScale, min(self.scale, RenderView.maxScale))
         }
     }
     
@@ -974,8 +990,19 @@ class RenderView: UIView, UIGestureRecognizerDelegate
         {
         case .changed, .ended:
             
-            //Centered scaling? Easy!
+            //Get the pinch center:
+            let point = pinchGR.location(in: self)
+            
+            //Convert to Gaussian:
+            let centerX = self.positionX + ((Double(point.x) - Double(0.5 * self.frame.width)) / self.scale)
+            let centerY = self.positionY - ((Double(point.y) - Double(0.5 * self.frame.height)) / self.scale)
+            
+            //Execute the scale:
             self.scale *= Double(pinchGR.scale)
+            
+            //Move the saved Gaussian back to the center point:
+            self.positionX = centerX - ((Double(point.x) - Double(0.5 * self.frame.width)) / self.scale)
+            self.positionY = centerY + ((Double(point.y) - Double(0.5 * self.frame.height)) / self.scale)
             
         default: ()
         }
