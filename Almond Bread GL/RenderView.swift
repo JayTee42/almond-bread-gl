@@ -139,7 +139,7 @@ class RenderView: UIView, UIGestureRecognizerDelegate
     }
     
     //The current multisampling level:
-    var multiSamplingLevel = 4
+    var multiSamplingLevel = 0
     {
         didSet
         {
@@ -454,6 +454,10 @@ class RenderView: UIView, UIGestureRecognizerDelegate
     {
         let dbgDomain = "Initializing GLES features"
         
+        //Disable alpha blending:
+        glDisable(GLenum(GL_BLEND))
+        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to disable alpha blending")
+        
         //Disable the depth test:
         glDisable(GLenum(GL_DEPTH_TEST))
         RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to disable the depth test")
@@ -472,10 +476,6 @@ class RenderView: UIView, UIGestureRecognizerDelegate
         //Disable dithering:
         glDisable(GLenum(GL_DITHER))
         RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to disable dithering")
-        
-        //Some hints:
-        glHint(GLenum(GL_GENERATE_MIPMAP_HINT), GLenum(GL_NICEST))
-        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to hint mipmap generation")
     }
     
     ///Needs context.
@@ -614,6 +614,10 @@ class RenderView: UIView, UIGestureRecognizerDelegate
         //Assign the value to this uniform (const):
         glUniform1i(hueTextureUniform, 0)
         RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to assign to constant uniform (hueTexture)")
+        
+        //Release the shader compiler:
+        glReleaseShaderCompiler()
+        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to release the shader compiler")
     }
     
     ///Needs context.

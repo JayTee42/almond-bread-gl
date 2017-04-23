@@ -30,7 +30,7 @@ void main()
     }
     
     //Get a relative, smooth hue value:
-    mediump float hue = sqrt(float(i) / float(iterations));
+    mediump float hue = float(i) / float(iterations);
     
     //Do a texture lookup:
     sampleRenderbuffer = texture(hueTexture, vec2(hue, 0.5));

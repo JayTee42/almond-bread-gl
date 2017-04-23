@@ -10,7 +10,7 @@ import UIKit
 
 class RenderViewController: UIViewController
 {
-    private static let expandedConstraintDistance = CGFloat(160)
+    private static let expandedConstraintDistance = CGFloat(200)
     
     //Iterations:
     private static let minIterations = UInt(1)
@@ -21,6 +21,9 @@ class RenderViewController: UIViewController
     private static let minRenderScale = 0.5
     private static let maxRenderScale = 1.25 * Double(UIScreen.main.scale)
     private static let initialRenderScale = Double(UIScreen.main.scale)
+    
+    //Multisampling:
+    private static let initialMultisampling = false
     
     //Continuous sliders:
     private static let initialContinuousSliders = false
@@ -44,6 +47,9 @@ class RenderViewController: UIViewController
     //The render scale UI:
     @IBOutlet weak var renderScaleSliderIB: UISlider!
     @IBOutlet weak var renderScaleLabelIB: UILabel!
+    
+    //The multisampling UI:
+    @IBOutlet weak var multisamplingSwitchIB: UISwitch!
     
     //The continuous UI:
     @IBOutlet weak var continuousSlidersSwitchIB: UISwitch!
@@ -78,6 +84,10 @@ class RenderViewController: UIViewController
         self.renderScaleSliderIB.value = Float(RenderViewController.initialRenderScale)
         
         self.renderScaleLabelIB.text = String(format: "%.2fx", RenderViewController.initialRenderScale)
+        
+        //Multisampling:
+        self.renderViewIB.multiSamplingLevel = (RenderViewController.initialMultisampling ? 4 : 0)
+        self.multisamplingSwitchIB.isOn = RenderViewController.initialMultisampling
         
         //Continuous sliders:
         self.iterationsSliderIB.isContinuous = RenderViewController.initialContinuousSliders
@@ -118,6 +128,11 @@ class RenderViewController: UIViewController
         
         self.renderViewIB.superSamplingFactor = value
         self.renderScaleLabelIB.text = String(format: "%.2fx", value)
+    }
+    
+    @IBAction func multisamplingSwitchValueChanged(sender: UISwitch)
+    {
+        self.renderViewIB.multiSamplingLevel = (sender.isOn ? 4 : 0)
     }
     
     @IBAction func continuousSlidersSwitchValueChanged(sender: UISwitch)
