@@ -102,6 +102,9 @@ class RenderView: UIView, UIGestureRecognizerDelegate
     //The shader program:
     private var shaderProgramHandle: GLuint = 0
     
+    //The hue textures;
+    private var hueTextures = [HueTexture: GLuint]()
+    
     //The uniforms:
     private var gaussianPositionUniform: GLint = 0
     private var gaussianHalfFrameUniform: GLint = 0
@@ -185,6 +188,23 @@ class RenderView: UIView, UIGestureRecognizerDelegate
         {
             //Mark as dirty:
             self.isDirty = true
+        }
+    }
+    
+    //The current hue texture:
+    var hueTexture: HueTexture = .fire
+    {
+        didSet
+        {
+            //MArk as dirty:
+            self.isDirty = true
+            
+            //Bind the corresponding texture:
+            inGLESContext
+            {
+                glBindTexture(GLenum(GL_TEXTURE_2D), self.hueTextures[self.hueTexture]!)
+                RenderView.checkError(inDebugDomain: "Binding hue texture", withErrorText: "Failed to bind hue texture")
+            }
         }
     }
     
@@ -293,6 +313,14 @@ class RenderView: UIView, UIGestureRecognizerDelegate
             //Delete shader program:
             glDeleteProgram(self.shaderProgramHandle)
             self.shaderProgramHandle = 0
+            
+            //Delete hue textures:
+            var textureHandles: [GLuint] = self.hueTextures.values.map{ $0 }
+            
+            glDeleteTextures(GLsizei(textureHandles.count), &textureHandles)
+            RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to delete hue textures")
+            
+            self.hueTextures.removeAll()
             
             //Delete sample framebuffer:
             glDeleteBuffers(1, &self.sampleFramebuffer)
@@ -630,10 +658,23 @@ class RenderView: UIView, UIGestureRecognizerDelegate
     {
         let dbgDomain = "Initializing textures"
         
+        //Activate the texture unit:
+        glActiveTexture(GLenum(GL_TEXTURE0))
+        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to activate texture unit")
+        
+        //Create the textures:
+        HueTexture.orderedValues.forEach{ self.hueTextures[$0] = createHueTexture(forHue: $0)}
+    }
+    
+    ///Needs context.
+    private func createHueTexture(forHue hue: HueTexture) -> GLuint
+    {
+        let dbgDomain = "Creating texture"
+        
         //Read the bytes:
-        guard let url = Bundle.main.url(forResource: "Hue", withExtension: "rgba") else
+        guard let url = Bundle.main.url(forResource: hue.rawValue, withExtension: "rgba") else
         {
-            preconditionFailure("[\(dbgDomain)] Failed to load hue texture.")
+            preconditionFailure("[\(dbgDomain)] Failed to load hue texture: \"\(hue.rawValue)\"")
         }
         
         guard let pixelsData = try? Data(contentsOf: url) else
@@ -654,10 +695,6 @@ class RenderView: UIView, UIGestureRecognizerDelegate
         
         glGenTextures(1, &textureHandle)
         RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to generate texture handle")
-        
-        //Activate the texture unit:
-        glActiveTexture(GLenum(GL_TEXTURE0))
-        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to activate texture unit")
         
         //Bind our texture:
         glBindTexture(GLenum(GL_TEXTURE_2D), textureHandle)
@@ -684,6 +721,9 @@ class RenderView: UIView, UIGestureRecognizerDelegate
         //Set mag filter:
         glTexParameteri(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MAG_FILTER), GLint(GL_NEAREST))
         RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to set texture magnification filter")
+        
+        //Return the texture handle:
+        return textureHandle
     }
     
     private func initializeGestureRecognizers()
@@ -709,6 +749,9 @@ class RenderView: UIView, UIGestureRecognizerDelegate
         //Calculate our pixel size from the point size and the supersampling factor:
         self.viewportWidthPx = UInt(self.superSamplingFactor * Double(self.frame.width))
         self.viewportHeightPx = UInt(self.superSamplingFactor * Double(self.frame.height))
+        
+        //Set the new content scale for the layer:
+        self.eaglLayer.contentsScale = CGFloat(self.superSamplingFactor)
         
         //We have to link the buffers again for the new viewport:
         linkBuffers()

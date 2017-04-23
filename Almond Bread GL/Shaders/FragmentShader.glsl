@@ -21,10 +21,12 @@ void main()
     
     for (i = 0u; i < iterations; i++)
     {
-        z = vec2((z.x * z.x) - (z.y * z.y), 2.0 * z.x * z.y) + c;
-        
+        //Condition:
         if (dot(z, z) >= 4.0)
             break;
+        
+        //Step:
+        z = vec2((z.x * z.x) - (z.y * z.y), 2.0 * z.x * z.y) + c;
     }
     
     //Get a relative, smooth hue value:
