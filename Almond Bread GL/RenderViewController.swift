@@ -10,7 +10,8 @@ import UIKit
 
 class RenderViewController: UIViewController
 {
-    //The initial values and limits:
+    private static let expandedConstraintDistance = CGFloat(160)
+    
     //Iterations:
     private static let minIterations = UInt(1)
     private static let maxIterations = UInt(1024)
@@ -26,6 +27,12 @@ class RenderViewController: UIViewController
     
     //Themes:
     private static let initialTheme = HueTexture.fire
+    
+    //Are we currently expanded?
+    private var isExpanded = false
+    
+    //The expand / collapse constraint:
+    @IBOutlet weak var expandCollapseConstraintIB: NSLayoutConstraint!
     
     //The render view:
     @IBOutlet weak var renderViewIB: RenderView!
@@ -49,6 +56,10 @@ class RenderViewController: UIViewController
         super.viewDidLoad()
         
         //Set the initial values:
+        
+        //Expand / Collaps:
+        self.expandCollapseConstraintIB.constant = (self.isExpanded ? RenderViewController.expandedConstraintDistance : 0)
+        self.view.layoutIfNeeded()
         
         //Iterations:
         self.renderViewIB.iterations = RenderViewController.initialIterations
@@ -80,6 +91,15 @@ class RenderViewController: UIViewController
         self.themesSegment.removeAllSegments()
         HueTexture.orderedValues.forEach{ self.themesSegment.insertSegment(withTitle: $0.title, at: self.themesSegment.numberOfSegments, animated: false) }
         self.themesSegment.selectedSegmentIndex = HueTexture.orderedValues.index(of: RenderViewController.initialTheme)!
+    }
+    
+    @IBAction func toggleExpandedButtonTouched(sender: UIButton)
+    {
+        self.isExpanded = !self.isExpanded
+        
+        self.view.layoutIfNeeded()
+        self.expandCollapseConstraintIB.constant = (self.isExpanded ? RenderViewController.expandedConstraintDistance : 0)
+        UIView.animate(withDuration: 0.5){ self.view.layoutIfNeeded() }
     }
     
     @IBAction func iterationsSliderValueChanged(sender: UISlider)
