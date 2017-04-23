@@ -13,9 +13,9 @@
 		A81846A01EAA2694003A6986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A818469F1EAA2694003A6986 /* Assets.xcassets */; };
 		A81846A31EAA2694003A6986 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A81846A11EAA2694003A6986 /* LaunchScreen.storyboard */; };
 		A81846AD1EAA2915003A6986 /* RenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81846AC1EAA2915003A6986 /* RenderView.swift */; };
-		A8CA4E451EABB1E10098AD4E /* VertexShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A8CA4E441EABB1E10098AD4E /* VertexShader.glsl */; };
-		A8CA4E471EABB1EF0098AD4E /* FragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A8CA4E461EABB1EF0098AD4E /* FragmentShader.glsl */; };
-		A8CA4E491EAC15670098AD4E /* Hue.rgba in Resources */ = {isa = PBXBuildFile; fileRef = A8CA4E481EAC13B70098AD4E /* Hue.rgba */; };
+		A8CEF0D41EACB26600B575E3 /* FragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A8CEF0D21EACB26600B575E3 /* FragmentShader.glsl */; };
+		A8CEF0D51EACB26600B575E3 /* VertexShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A8CEF0D31EACB26600B575E3 /* VertexShader.glsl */; };
+		A8CEF0D71EACB26C00B575E3 /* Hue.rgba in Resources */ = {isa = PBXBuildFile; fileRef = A8CEF0D61EACB26C00B575E3 /* Hue.rgba */; };
 		A8F5D5B21EAA5C6D00C6795C /* VertexData.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F5D5B11EAA5C6D00C6795C /* VertexData.m */; };
 /* End PBXBuildFile section */
 
@@ -28,9 +28,9 @@
 		A81846A21EAA2694003A6986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A81846A41EAA2694003A6986 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A81846AC1EAA2915003A6986 /* RenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderView.swift; sourceTree = "<group>"; };
-		A8CA4E441EABB1E10098AD4E /* VertexShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VertexShader.glsl; sourceTree = "<group>"; };
-		A8CA4E461EABB1EF0098AD4E /* FragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FragmentShader.glsl; sourceTree = "<group>"; };
-		A8CA4E481EAC13B70098AD4E /* Hue.rgba */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hue.rgba; sourceTree = "<group>"; };
+		A8CEF0D21EACB26600B575E3 /* FragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FragmentShader.glsl; path = Shaders/FragmentShader.glsl; sourceTree = "<group>"; };
+		A8CEF0D31EACB26600B575E3 /* VertexShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = VertexShader.glsl; path = Shaders/VertexShader.glsl; sourceTree = "<group>"; };
+		A8CEF0D61EACB26C00B575E3 /* Hue.rgba */ = {isa = PBXFileReference; lastKnownFileType = file; name = Hue.rgba; path = Textures/Hue.rgba; sourceTree = "<group>"; };
 		A8E869DA1EAA595F00BDE6D7 /* VertexData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VertexData.h; sourceTree = "<group>"; };
 		A8F5D5B01EAA5C6D00C6795C /* Almond Bread GL-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Almond Bread GL-Bridging-Header.h"; sourceTree = "<group>"; };
 		A8F5D5B11EAA5C6D00C6795C /* VertexData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VertexData.m; sourceTree = "<group>"; };
@@ -69,11 +69,10 @@
 				A81846981EAA2694003A6986 /* AppDelegate.swift */,
 				A8E869DA1EAA595F00BDE6D7 /* VertexData.h */,
 				A8F5D5B11EAA5C6D00C6795C /* VertexData.m */,
-				A8CA4E481EAC13B70098AD4E /* Hue.rgba */,
-				A8CA4E441EABB1E10098AD4E /* VertexShader.glsl */,
-				A8CA4E461EABB1EF0098AD4E /* FragmentShader.glsl */,
 				A81846AC1EAA2915003A6986 /* RenderView.swift */,
 				A818469A1EAA2694003A6986 /* RenderViewController.swift */,
+				A8CEF0D01EACB22700B575E3 /* Shaders */,
+				A8CEF0D11EACB23200B575E3 /* Textures */,
 				A81846AB1EAA28F1003A6986 /* UI */,
 				A81846AA1EAA28CC003A6986 /* Misc */,
 			);
@@ -97,6 +96,23 @@
 				A81846A11EAA2694003A6986 /* LaunchScreen.storyboard */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		A8CEF0D01EACB22700B575E3 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				A8CEF0D21EACB26600B575E3 /* FragmentShader.glsl */,
+				A8CEF0D31EACB26600B575E3 /* VertexShader.glsl */,
+			);
+			name = Shaders;
+			sourceTree = "<group>";
+		};
+		A8CEF0D11EACB23200B575E3 /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				A8CEF0D61EACB26C00B575E3 /* Hue.rgba */,
+			);
+			name = Textures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,10 +178,10 @@
 			files = (
 				A81846A31EAA2694003A6986 /* LaunchScreen.storyboard in Resources */,
 				A81846A01EAA2694003A6986 /* Assets.xcassets in Resources */,
-				A8CA4E491EAC15670098AD4E /* Hue.rgba in Resources */,
-				A8CA4E451EABB1E10098AD4E /* VertexShader.glsl in Resources */,
+				A8CEF0D71EACB26C00B575E3 /* Hue.rgba in Resources */,
+				A8CEF0D51EACB26600B575E3 /* VertexShader.glsl in Resources */,
+				A8CEF0D41EACB26600B575E3 /* FragmentShader.glsl in Resources */,
 				A818469E1EAA2694003A6986 /* Main.storyboard in Resources */,
-				A8CA4E471EABB1EF0098AD4E /* FragmentShader.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
