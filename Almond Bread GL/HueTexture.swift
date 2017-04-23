@@ -11,11 +11,12 @@ enum HueTexture: String
     case fire = "FireHue"
     case ice = "IceHue"
     case ash = "AshHue"
+    case trippy = "TrippyHue"
     
     //Get all the values in order:
     static var orderedValues: [HueTexture]
     {
-        return [.fire, .ice, .ash]
+        return [.fire, .ice, .ash, .trippy]
     }
     
     //A friendly title for the texture:
@@ -26,6 +27,7 @@ enum HueTexture: String
         case .fire: return "Fire"
         case .ice: return "Ice"
         case .ash: return "Ash"
+        case .trippy: return "Trippy"
         }
     }
 }

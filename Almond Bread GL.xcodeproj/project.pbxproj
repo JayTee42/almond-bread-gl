@@ -19,6 +19,7 @@
 		A8CEF0D91EACC78100B575E3 /* HueTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEF0D81EACC78100B575E3 /* HueTexture.swift */; };
 		A8CEF0DC1EACCA6500B575E3 /* IceHue.rgba in Resources */ = {isa = PBXBuildFile; fileRef = A8CEF0DA1EACCA6500B575E3 /* IceHue.rgba */; };
 		A8CEF0DD1EACCA6500B575E3 /* AshHue.rgba in Resources */ = {isa = PBXBuildFile; fileRef = A8CEF0DB1EACCA6500B575E3 /* AshHue.rgba */; };
+		A8CEF0DF1EACEAC000B575E3 /* TrippyHue.rgba in Resources */ = {isa = PBXBuildFile; fileRef = A8CEF0DE1EACEAC000B575E3 /* TrippyHue.rgba */; };
 		A8F5D5B21EAA5C6D00C6795C /* VertexData.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F5D5B11EAA5C6D00C6795C /* VertexData.m */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		A8CEF0D81EACC78100B575E3 /* HueTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HueTexture.swift; sourceTree = "<group>"; };
 		A8CEF0DA1EACCA6500B575E3 /* IceHue.rgba */ = {isa = PBXFileReference; lastKnownFileType = file; name = IceHue.rgba; path = Textures/IceHue.rgba; sourceTree = "<group>"; };
 		A8CEF0DB1EACCA6500B575E3 /* AshHue.rgba */ = {isa = PBXFileReference; lastKnownFileType = file; name = AshHue.rgba; path = Textures/AshHue.rgba; sourceTree = "<group>"; };
+		A8CEF0DE1EACEAC000B575E3 /* TrippyHue.rgba */ = {isa = PBXFileReference; lastKnownFileType = file; name = TrippyHue.rgba; path = Textures/TrippyHue.rgba; sourceTree = "<group>"; };
 		A8E869DA1EAA595F00BDE6D7 /* VertexData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VertexData.h; sourceTree = "<group>"; };
 		A8F5D5B01EAA5C6D00C6795C /* Almond Bread GL-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Almond Bread GL-Bridging-Header.h"; sourceTree = "<group>"; };
 		A8F5D5B11EAA5C6D00C6795C /* VertexData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VertexData.m; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				A8CEF0D61EACB26C00B575E3 /* FireHue.rgba */,
 				A8CEF0DA1EACCA6500B575E3 /* IceHue.rgba */,
 				A8CEF0DB1EACCA6500B575E3 /* AshHue.rgba */,
+				A8CEF0DE1EACEAC000B575E3 /* TrippyHue.rgba */,
 			);
 			name = Textures;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				A8CEF0DD1EACCA6500B575E3 /* AshHue.rgba in Resources */,
 				A8CEF0D51EACB26600B575E3 /* VertexShader.glsl in Resources */,
 				A8CEF0DC1EACCA6500B575E3 /* IceHue.rgba in Resources */,
+				A8CEF0DF1EACEAC000B575E3 /* TrippyHue.rgba in Resources */,
 				A8CEF0D41EACB26600B575E3 /* FragmentShader.glsl in Resources */,
 				A818469E1EAA2694003A6986 /* Main.storyboard in Resources */,
 			);
