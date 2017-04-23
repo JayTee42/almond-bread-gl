@@ -26,33 +26,18 @@ class RenderView: UIView, UIGestureRecognizerDelegate
     //The GLES layer (passed by the view):
     private var eaglLayer: CAEAGLLayer! = nil
     
-    //Our framebuffer that is used for rendering.
-    //Multisampling takes place here if it is enabled.
-    private var sampleFramebuffer: GLuint = 0
+    //Our framebuffer that is used for displaying and rendering.
+    private var framebuffer: GLuint = 0
     
-    //Our sample renderbuffer.
-    //Red (1 byte)
-    //Green (1 byte)
-    //Blue (1 byte)
-    //Unused (1 byte) <--- only because we have to blit into the display renderbuffer which is RGBA, too.
-    private var sampleRenderbuffer: GLuint = 0
-    
-    //Our drawbuffer configuration for the sample framebuffer:
-    private static let sampleDrawbuffers = [GLenum(GL_COLOR_ATTACHMENT0)]
-    
-    //Our framebuffer that is used for displaying.
-    //We blit into this one, optionally via multisampling.
-    private var displayFramebuffer: GLuint = 0
-    
-    //Our display renderbuffer.
+    //Our renderbuffer.
     //Red (1 byte)
     //Green (1 byte)
     //Blue (1 byte)
     //Unused (1 byte) <--- only because Apple manages the layer (kEAGLColorFormatRGBA8)!
-    private var displayRenderbuffer: GLuint = 0
+    private var renderbuffer: GLuint = 0
     
-    //Our drawbuffer comfiguration for the display framebuffer:
-    private static let displayDrawbuffers = [GLenum(GL_COLOR_ATTACHMENT0)]
+    //Our drawbuffer comfiguration for the framebuffer:
+    private static let drawbuffers = [GLenum(GL_COLOR_ATTACHMENT0)]
     
     //The current viewport in pixels:
     private var viewportWidthPx: UInt = 1
@@ -278,8 +263,8 @@ class RenderView: UIView, UIGestureRecognizerDelegate
         
         inGLESContext
         {
-            //Initialize the framebuffers and renderbuffers:
-            initializeFramebuffersRenderbuffers()
+            //Initialize the framebuffer and renderbuffer:
+            initializeFramebufferRenderbuffer()
         
             //Initialize GLES features (or, more precisely, disable them all):
             initializeGLESFeatures()
@@ -338,29 +323,17 @@ class RenderView: UIView, UIGestureRecognizerDelegate
             
             self.hueTextures.removeAll()
             
-            //Delete sample framebuffer:
-            glDeleteBuffers(1, &self.sampleFramebuffer)
-            RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to delete sample framebuffer")
+            //Delete framebuffer:
+            glDeleteBuffers(1, &self.framebuffer)
+            RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to delete framebuffer")
             
-            self.sampleFramebuffer = 0
+            self.framebuffer = 0
             
-            //Delete display framebuffer:
-            glDeleteBuffers(1, &self.displayFramebuffer)
-            RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to delete display framebuffer")
+            //Delete renderbuffer:
+            glDeleteBuffers(1, &self.renderbuffer)
+            RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to delete renderbuffer")
             
-            self.displayFramebuffer = 0
-            
-            //Delete sample renderbuffer:
-            glDeleteBuffers(1, &self.sampleRenderbuffer)
-            RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to delete sample renderbuffer")
-            
-            self.sampleRenderbuffer = 0
-            
-            //Delete display renderbuffer:
-            glDeleteBuffers(1, &self.displayRenderbuffer)
-            RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to delete display framebuffer")
-            
-            self.displayRenderbuffer = 0
+            self.renderbuffer = 0
         }
     }
     
@@ -420,33 +393,24 @@ class RenderView: UIView, UIGestureRecognizerDelegate
     }
     
     ///Needs context.
-    private func initializeFramebuffersRenderbuffers()
+    private func initializeFramebufferRenderbuffer()
     {
-        let dbgDomain = "Initializing framebuffers"
+        let dbgDomain = "Initializing framebuffer"
         
-        //Generate the framebuffers:
-        var framebuffers = Array<GLuint>(repeating: 0, count: 2)
+        //Generate the framebuffer:
+        glGenFramebuffers(1, &self.framebuffer)
+        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to generate framebuffer")
         
-        glGenFramebuffers(GLsizei(framebuffers.count), &framebuffers)
-        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to generate the framebuffers")
+        //Generate the renderbuffer:
+        glGenRenderbuffers(1, &self.renderbuffer)
+        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to generate renderbuffer")
         
-        //Assign them:
-        self.sampleFramebuffer = framebuffers[0]
-        self.displayFramebuffer = framebuffers[1]
+        //Bind them as default binding:
+        glBindFramebuffer(GLenum(GL_FRAMEBUFFER), self.framebuffer)
+        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to bind framebuffer")
         
-        //Generate the renderbuffers:
-        var renderbuffers = Array<GLuint>(repeating: 0, count: 2)
-        
-        glGenRenderbuffers(GLsizei(renderbuffers.count), &renderbuffers)
-        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to generate the renderbuffers")
-        
-        //Assign them:
-        self.sampleRenderbuffer = renderbuffers[0]
-        self.displayRenderbuffer = renderbuffers[1]
-        
-        //Bind the display renderbuffer as default binding:
-        glBindRenderbuffer(GLenum(GL_RENDERBUFFER), self.displayRenderbuffer)
-        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to bind the display renderbuffer")
+        glBindRenderbuffer(GLenum(GL_RENDERBUFFER), self.renderbuffer)
+        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to bind renderbuffer")
     }
     
     ///Needs context.
@@ -786,61 +750,24 @@ class RenderView: UIView, UIGestureRecognizerDelegate
     {
         let dbgDomain = "Linking buffers"
         
-        //Bind the sample framebuffer:
-        glBindFramebuffer(GLenum(GL_FRAMEBUFFER), self.sampleFramebuffer)
-        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to bind the sample framebuffer")
-        
-        //Bind the sample renderbuffer:
-        glBindRenderbuffer(GLenum(GL_RENDERBUFFER), self.sampleRenderbuffer)
-        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to bind the sample renderbuffer")
-        
-        //Specify its storage (multisampled):
-        glRenderbufferStorageMultisample(GLenum(GL_RENDERBUFFER), GLsizei(self.multiSamplingLevel), GLenum(GL_RGBA8), GLsizei(self.viewportWidthPx), GLsizei(self.viewportHeightPx))
-        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to specify storage for the sample renderbuffer")
-        
-        //Attach the sample renderbuffer to the sample framebuffer as color attachment 0:
-        glFramebufferRenderbuffer(GLenum(GL_FRAMEBUFFER), GLenum(GL_COLOR_ATTACHMENT0), GLenum(GL_RENDERBUFFER), self.sampleRenderbuffer)
-        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to attach the sample renderbuffer")
-        
-        //Propagate our sample drawbuffers:
-        glDrawBuffers(GLsizei(RenderView.sampleDrawbuffers.count), RenderView.sampleDrawbuffers)
-        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to propagate the sample drawbuffers")
-        
-        //Check the sample framebuffer for completeness.
-        //Only on checked builds!
-        if RenderView.isCheckedBuild
-        {
-            let framebufferStatus = glCheckFramebufferStatus(GLenum(GL_FRAMEBUFFER))
-            precondition(framebufferStatus == GLenum(GL_FRAMEBUFFER_COMPLETE), "[\(dbgDomain)] Sample frame buffer is not complete (\(framebufferStatus))")
-        }
-        
-        //Bind the display framebuffer:
-        glBindFramebuffer(GLenum(GL_FRAMEBUFFER), self.displayFramebuffer)
-        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to bind the display framebuffer")
-        
-        //Bind the display renderbuffer.
-        //This stays as default binding!
-        glBindRenderbuffer(GLenum(GL_RENDERBUFFER), self.displayRenderbuffer)
-        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to bind the display renderbuffer")
-        
-        //Specify the EAGL layer as storage for the display renderbuffer.
+        //Specify the EAGL layer as storage for the renderbuffer:
         let success = self.eaglContext.renderbufferStorage(Int(GL_RENDERBUFFER), from: self.eaglLayer)
-        precondition(success, "[\(dbgDomain)] Failed to specify the display renderbuffer's storage")
+        precondition(success, "[\(dbgDomain)] Failed to specify renderbuffer's storage")
         
-        //Attach the display renderbuffer to the display framebuffer as color attachment 0:
-        glFramebufferRenderbuffer(GLenum(GL_FRAMEBUFFER), GLenum(GL_COLOR_ATTACHMENT0), GLenum(GL_RENDERBUFFER), self.displayRenderbuffer)
-        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to attach the display renderbuffer")
+        //Attach the renderbuffer to the framebuffer as color attachment 0:
+        glFramebufferRenderbuffer(GLenum(GL_FRAMEBUFFER), GLenum(GL_COLOR_ATTACHMENT0), GLenum(GL_RENDERBUFFER), self.renderbuffer)
+        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to attach display renderbuffer")
         
-        //Propagate our display drawbuffers:
-        glDrawBuffers(GLsizei(RenderView.displayDrawbuffers.count), RenderView.displayDrawbuffers)
-        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to propagate the display drawbuffers")
+        //Propagate our drawbuffers:
+        glDrawBuffers(GLsizei(RenderView.drawbuffers.count), RenderView.drawbuffers)
+        RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to propagate drawbuffers")
         
         //Check the display framebuffer for completeness.
         //Only on checked builds!
         if RenderView.isCheckedBuild
         {
             let framebufferStatus = glCheckFramebufferStatus(GLenum(GL_FRAMEBUFFER))
-            precondition(framebufferStatus == GLenum(GL_FRAMEBUFFER_COMPLETE), "[\(dbgDomain)] Display frame buffer is not complete (\(framebufferStatus))")
+            precondition(framebufferStatus == GLenum(GL_FRAMEBUFFER_COMPLETE), "[\(dbgDomain)] Framebuffer is not complete (\(framebufferStatus))")
         }
     }
     
@@ -891,37 +818,21 @@ class RenderView: UIView, UIGestureRecognizerDelegate
             glUniform1ui(self.iterationsUniform, GLuint(self.iterations))
             RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to provide uniform (iterations)")
             
-            //Bind the sample framebuffer:
-            glBindFramebuffer(GLenum(GL_DRAW_FRAMEBUFFER), self.sampleFramebuffer)
-            RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to bind the sample framebuffer as destination")
-            
-            //Clear the sample renderbuffer with the given clear color.
-            //Second parameter means: drawbuffers[0] which is the sample renderbuffer.
+            //Clear the renderbuffer with the given clear color.
+            //Second parameter means: drawbuffers[0] which is the renderbuffer.
             glClearBufferfv(GLenum(GL_COLOR), 0, self.clearColor)
-            RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to clear the sample renderbuffer")
+            RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to clear renderbuffer")
             
             //Draw a full-screen-quad:
             glDrawArrays(GLenum(GL_TRIANGLE_STRIP), 0, 4)
+            RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to draw")
             
-            //Bind the sample framebuffer as source:
-            glBindFramebuffer(GLenum(GL_READ_FRAMEBUFFER), self.sampleFramebuffer)
-            RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to bind the sample framebuffer as source")
-            
-            //Bind the display framebuffer as destination:
-            glBindFramebuffer(GLenum(GL_DRAW_FRAMEBUFFER), self.displayFramebuffer)
-            RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to bind the display framebuffer as destination")
-            
-            //Blit from source to destination:
-            glBlitFramebuffer(0, 0, GLint(self.viewportWidthPx), GLint(self.viewportHeightPx), 0, 0, GLint(self.viewportWidthPx), GLint(self.viewportHeightPx), GLbitfield(GL_COLOR_BUFFER_BIT), GLenum(GL_NEAREST))
-            RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to blit between framebuffers")
-            
-            //Invalidate the sample framebuffer:
-            glInvalidateFramebuffer(GLenum(GL_READ_FRAMEBUFFER), 1, RenderView.sampleDrawbuffers)
-            RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to invalidate sample framebuffer")
-            
-            //Present the content of the display renderbuffer.
-            //It is always bound as default renderbuffer binding!
+            //Present the content of the renderbuffer:
             self.eaglContext.presentRenderbuffer(Int(GL_RENDERBUFFER))
+            
+            //Invalidate the framebuffer:
+            glInvalidateFramebuffer(GLenum(GL_FRAMEBUFFER), 1, RenderView.drawbuffers)
+            RenderView.checkError(inDebugDomain: dbgDomain, withErrorText: "Failed to invalidate framebuffer")
         }
     }
     
