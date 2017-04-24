@@ -21,6 +21,8 @@
 		A8CEF0DD1EACCA6500B575E3 /* AshHue.rgba in Resources */ = {isa = PBXBuildFile; fileRef = A8CEF0DB1EACCA6500B575E3 /* AshHue.rgba */; };
 		A8CEF0DF1EACEAC000B575E3 /* TrippyHue.rgba in Resources */ = {isa = PBXBuildFile; fileRef = A8CEF0DE1EACEAC000B575E3 /* TrippyHue.rgba */; };
 		A8D2451A1EAEA342005206D7 /* Math2.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D245191EAEA342005206D7 /* Math2.png */; };
+		A8D2451D1EAEBBD6005206D7 /* Ifi.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D2451C1EAEBBD6005206D7 /* Ifi.png */; };
+		A8D2451F1EAEBECE005206D7 /* LegalNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D2451E1EAEBECE005206D7 /* LegalNoticeViewController.swift */; };
 		A8D42B691EAE86A8005E32DB /* Mandelbrot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A8D42B681EAE86A8005E32DB /* Mandelbrot.jpg */; };
 		A8D42B6B1EAE94BC005E32DB /* Math1.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D42B6A1EAE94BC005E32DB /* Math1.png */; };
 		A8E014F91EAE16F40005CEEE /* AdditionalInforViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E014F81EAE16F40005CEEE /* AdditionalInforViewController.swift */; };
@@ -45,6 +47,8 @@
 		A8CEF0DB1EACCA6500B575E3 /* AshHue.rgba */ = {isa = PBXFileReference; lastKnownFileType = file; name = AshHue.rgba; path = Textures/AshHue.rgba; sourceTree = "<group>"; };
 		A8CEF0DE1EACEAC000B575E3 /* TrippyHue.rgba */ = {isa = PBXFileReference; lastKnownFileType = file; name = TrippyHue.rgba; path = Textures/TrippyHue.rgba; sourceTree = "<group>"; };
 		A8D245191EAEA342005206D7 /* Math2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Math2.png; path = Images/Math2.png; sourceTree = "<group>"; };
+		A8D2451C1EAEBBD6005206D7 /* Ifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Ifi.png; path = Images/Ifi.png; sourceTree = "<group>"; };
+		A8D2451E1EAEBECE005206D7 /* LegalNoticeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalNoticeViewController.swift; sourceTree = "<group>"; };
 		A8D42B681EAE86A8005E32DB /* Mandelbrot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Mandelbrot.jpg; path = Images/Mandelbrot.jpg; sourceTree = "<group>"; };
 		A8D42B6A1EAE94BC005E32DB /* Math1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Math1.png; path = Images/Math1.png; sourceTree = "<group>"; };
 		A8E014F81EAE16F40005CEEE /* AdditionalInforViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalInforViewController.swift; sourceTree = "<group>"; };
@@ -84,12 +88,7 @@
 		A81846971EAA2694003A6986 /* Almond Bread GL */ = {
 			isa = PBXGroup;
 			children = (
-				A81846981EAA2694003A6986 /* AppDelegate.swift */,
-				A8E869DA1EAA595F00BDE6D7 /* VertexData.h */,
-				A8F5D5B11EAA5C6D00C6795C /* VertexData.m */,
-				A81846AC1EAA2915003A6986 /* RenderView.swift */,
-				A818469A1EAA2694003A6986 /* RenderViewController.swift */,
-				A8E014F81EAE16F40005CEEE /* AdditionalInforViewController.swift */,
+				A8D2451B1EAEB549005206D7 /* Source */,
 				A8CEF0D01EACB22700B575E3 /* Shaders */,
 				A8CEF0D11EACB23200B575E3 /* Textures */,
 				A8E3AEA71EAE314200073AAA /* Images */,
@@ -139,13 +138,28 @@
 			name = Textures;
 			sourceTree = "<group>";
 		};
+		A8D2451B1EAEB549005206D7 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				A81846981EAA2694003A6986 /* AppDelegate.swift */,
+				A8E869DA1EAA595F00BDE6D7 /* VertexData.h */,
+				A8F5D5B11EAA5C6D00C6795C /* VertexData.m */,
+				A81846AC1EAA2915003A6986 /* RenderView.swift */,
+				A818469A1EAA2694003A6986 /* RenderViewController.swift */,
+				A8E014F81EAE16F40005CEEE /* AdditionalInforViewController.swift */,
+				A8D2451E1EAEBECE005206D7 /* LegalNoticeViewController.swift */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		A8E3AEA71EAE314200073AAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				A8E3AEA81EAE315100073AAA /* Tubaf.png */,
 				A8D42B681EAE86A8005E32DB /* Mandelbrot.jpg */,
 				A8D42B6A1EAE94BC005E32DB /* Math1.png */,
 				A8D245191EAEA342005206D7 /* Math2.png */,
+				A8D2451C1EAEBBD6005206D7 /* Ifi.png */,
+				A8E3AEA81EAE315100073AAA /* Tubaf.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -215,6 +229,7 @@
 				A81846A31EAA2694003A6986 /* LaunchScreen.storyboard in Resources */,
 				A81846A01EAA2694003A6986 /* Assets.xcassets in Resources */,
 				A8CEF0D71EACB26C00B575E3 /* FireHue.rgba in Resources */,
+				A8D2451D1EAEBBD6005206D7 /* Ifi.png in Resources */,
 				A8CEF0DD1EACCA6500B575E3 /* AshHue.rgba in Resources */,
 				A8E3AEA91EAE315100073AAA /* Tubaf.png in Resources */,
 				A8CEF0D51EACB26600B575E3 /* VertexShader.glsl in Resources */,
@@ -240,6 +255,7 @@
 				A8CEF0D91EACC78100B575E3 /* HueTexture.swift in Sources */,
 				A81846AD1EAA2915003A6986 /* RenderView.swift in Sources */,
 				A8F5D5B21EAA5C6D00C6795C /* VertexData.m in Sources */,
+				A8D2451F1EAEBECE005206D7 /* LegalNoticeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

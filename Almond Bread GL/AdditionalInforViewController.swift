@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AdditionalViewController: UIViewController
+class AdditionalInfoViewController: UIViewController
 {
     //The shader label:
     @IBOutlet weak var shaderLabelIB: UILabel!
