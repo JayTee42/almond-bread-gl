@@ -31,8 +31,9 @@ class RenderViewController: UIViewController
     //Are we currently expanded?
     private var isExpanded = false
     
-    //The expand / collapse constraint:
+    //The expand / collapse UI:
     @IBOutlet weak var expandCollapseConstraintIB: NSLayoutConstraint!
+    @IBOutlet weak var expandCollapseButtonIB: UIButton!
     
     //The render view:
     @IBOutlet weak var renderViewIB: RenderView!
@@ -59,7 +60,7 @@ class RenderViewController: UIViewController
         
         //Expand / Collaps:
         self.expandCollapseConstraintIB.constant = (self.isExpanded ? RenderViewController.expandedConstraintDistance : 0)
-        self.view.layoutIfNeeded()
+        self.expandCollapseButtonIB.transform = (self.isExpanded ? CGAffineTransform(rotationAngle: CGFloat(Double.pi)) : CGAffineTransform.identity)
         
         //Iterations:
         self.renderViewIB.iterations = RenderViewController.initialIterations
@@ -92,8 +93,8 @@ class RenderViewController: UIViewController
         HueTexture.orderedValues.forEach{ self.themesSegment.insertSegment(withTitle: $0.title, at: self.themesSegment.numberOfSegments, animated: false) }
         self.themesSegment.selectedSegmentIndex = HueTexture.orderedValues.index(of: RenderViewController.initialTheme)!
         
-        //Add a shadow to the render view:
-        
+        //Layout:
+        self.view.layoutIfNeeded()
     }
     
     @IBAction func toggleExpandedButtonTouched(sender: UIButton)
@@ -102,7 +103,12 @@ class RenderViewController: UIViewController
         
         self.view.layoutIfNeeded()
         self.expandCollapseConstraintIB.constant = (self.isExpanded ? RenderViewController.expandedConstraintDistance : 0)
-        UIView.animate(withDuration: 0.5){ self.view.layoutIfNeeded() }
+        
+        UIView.animate(withDuration: 0.5)
+        {
+            self.expandCollapseButtonIB.transform = (self.isExpanded ? CGAffineTransform(rotationAngle: CGFloat(Double.pi)) : CGAffineTransform.identity)
+            self.view.layoutIfNeeded()
+        }
     }
     
     @IBAction func iterationsSliderValueChanged(sender: UISlider)
