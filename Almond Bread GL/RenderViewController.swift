@@ -10,7 +10,7 @@ import UIKit
 
 class RenderViewController: UIViewController
 {
-    private static let expandedConstraintDistance = CGFloat(160)
+    private static let expandedConstraintDistance = CGFloat(220)
     
     //Iterations:
     private static let minIterations = UInt(1)
@@ -20,10 +20,10 @@ class RenderViewController: UIViewController
     //Render scale:
     private static let minRenderScale = 0.5
     private static let maxRenderScale = 1.25 * Double(UIScreen.main.scale)
-    private static let initialRenderScale = Double(UIScreen.main.scale)
+    private static let initialRenderScale = 1.25
     
     //Continuous sliders:
-    private static let initialContinuousSliders = false
+    private static let initialContinuousSliders = true
     
     //Themes:
     private static let initialTheme = HueTexture.fire
@@ -44,9 +44,6 @@ class RenderViewController: UIViewController
     //The render scale UI:
     @IBOutlet weak var renderScaleSliderIB: UISlider!
     @IBOutlet weak var renderScaleLabelIB: UILabel!
-    
-    //The multisampling UI:
-    @IBOutlet weak var multisamplingSwitchIB: UISwitch!
     
     //The continuous UI:
     @IBOutlet weak var continuousSlidersSwitchIB: UISwitch!
@@ -94,6 +91,9 @@ class RenderViewController: UIViewController
         self.themesSegment.removeAllSegments()
         HueTexture.orderedValues.forEach{ self.themesSegment.insertSegment(withTitle: $0.title, at: self.themesSegment.numberOfSegments, animated: false) }
         self.themesSegment.selectedSegmentIndex = HueTexture.orderedValues.index(of: RenderViewController.initialTheme)!
+        
+        //Add a shadow to the render view:
+        
     }
     
     @IBAction func toggleExpandedButtonTouched(sender: UIButton)

@@ -22,7 +22,7 @@ void main()
     for (i = 0u; i < iterations; i++)
     {
         //Condition:
-        if (dot(z, z) >= 4.0)
+        if (dot(z, z) > 4.0)
             break;
         
         //Step:

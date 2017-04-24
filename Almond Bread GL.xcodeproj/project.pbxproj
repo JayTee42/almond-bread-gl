@@ -20,6 +20,11 @@
 		A8CEF0DC1EACCA6500B575E3 /* IceHue.rgba in Resources */ = {isa = PBXBuildFile; fileRef = A8CEF0DA1EACCA6500B575E3 /* IceHue.rgba */; };
 		A8CEF0DD1EACCA6500B575E3 /* AshHue.rgba in Resources */ = {isa = PBXBuildFile; fileRef = A8CEF0DB1EACCA6500B575E3 /* AshHue.rgba */; };
 		A8CEF0DF1EACEAC000B575E3 /* TrippyHue.rgba in Resources */ = {isa = PBXBuildFile; fileRef = A8CEF0DE1EACEAC000B575E3 /* TrippyHue.rgba */; };
+		A8D2451A1EAEA342005206D7 /* Math2.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D245191EAEA342005206D7 /* Math2.png */; };
+		A8D42B691EAE86A8005E32DB /* Mandelbrot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A8D42B681EAE86A8005E32DB /* Mandelbrot.jpg */; };
+		A8D42B6B1EAE94BC005E32DB /* Math1.png in Resources */ = {isa = PBXBuildFile; fileRef = A8D42B6A1EAE94BC005E32DB /* Math1.png */; };
+		A8E014F91EAE16F40005CEEE /* AdditionalInforViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E014F81EAE16F40005CEEE /* AdditionalInforViewController.swift */; };
+		A8E3AEA91EAE315100073AAA /* Tubaf.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E3AEA81EAE315100073AAA /* Tubaf.png */; };
 		A8F5D5B21EAA5C6D00C6795C /* VertexData.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F5D5B11EAA5C6D00C6795C /* VertexData.m */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +44,11 @@
 		A8CEF0DA1EACCA6500B575E3 /* IceHue.rgba */ = {isa = PBXFileReference; lastKnownFileType = file; name = IceHue.rgba; path = Textures/IceHue.rgba; sourceTree = "<group>"; };
 		A8CEF0DB1EACCA6500B575E3 /* AshHue.rgba */ = {isa = PBXFileReference; lastKnownFileType = file; name = AshHue.rgba; path = Textures/AshHue.rgba; sourceTree = "<group>"; };
 		A8CEF0DE1EACEAC000B575E3 /* TrippyHue.rgba */ = {isa = PBXFileReference; lastKnownFileType = file; name = TrippyHue.rgba; path = Textures/TrippyHue.rgba; sourceTree = "<group>"; };
+		A8D245191EAEA342005206D7 /* Math2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Math2.png; path = Images/Math2.png; sourceTree = "<group>"; };
+		A8D42B681EAE86A8005E32DB /* Mandelbrot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Mandelbrot.jpg; path = Images/Mandelbrot.jpg; sourceTree = "<group>"; };
+		A8D42B6A1EAE94BC005E32DB /* Math1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Math1.png; path = Images/Math1.png; sourceTree = "<group>"; };
+		A8E014F81EAE16F40005CEEE /* AdditionalInforViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalInforViewController.swift; sourceTree = "<group>"; };
+		A8E3AEA81EAE315100073AAA /* Tubaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Tubaf.png; path = Images/Tubaf.png; sourceTree = "<group>"; };
 		A8E869DA1EAA595F00BDE6D7 /* VertexData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VertexData.h; sourceTree = "<group>"; };
 		A8F5D5B01EAA5C6D00C6795C /* Almond Bread GL-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Almond Bread GL-Bridging-Header.h"; sourceTree = "<group>"; };
 		A8F5D5B11EAA5C6D00C6795C /* VertexData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VertexData.m; sourceTree = "<group>"; };
@@ -79,8 +89,10 @@
 				A8F5D5B11EAA5C6D00C6795C /* VertexData.m */,
 				A81846AC1EAA2915003A6986 /* RenderView.swift */,
 				A818469A1EAA2694003A6986 /* RenderViewController.swift */,
+				A8E014F81EAE16F40005CEEE /* AdditionalInforViewController.swift */,
 				A8CEF0D01EACB22700B575E3 /* Shaders */,
 				A8CEF0D11EACB23200B575E3 /* Textures */,
+				A8E3AEA71EAE314200073AAA /* Images */,
 				A81846AB1EAA28F1003A6986 /* UI */,
 				A81846AA1EAA28CC003A6986 /* Misc */,
 			);
@@ -125,6 +137,17 @@
 				A8CEF0DE1EACEAC000B575E3 /* TrippyHue.rgba */,
 			);
 			name = Textures;
+			sourceTree = "<group>";
+		};
+		A8E3AEA71EAE314200073AAA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A8E3AEA81EAE315100073AAA /* Tubaf.png */,
+				A8D42B681EAE86A8005E32DB /* Mandelbrot.jpg */,
+				A8D42B6A1EAE94BC005E32DB /* Math1.png */,
+				A8D245191EAEA342005206D7 /* Math2.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,14 +211,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8D2451A1EAEA342005206D7 /* Math2.png in Resources */,
 				A81846A31EAA2694003A6986 /* LaunchScreen.storyboard in Resources */,
 				A81846A01EAA2694003A6986 /* Assets.xcassets in Resources */,
 				A8CEF0D71EACB26C00B575E3 /* FireHue.rgba in Resources */,
 				A8CEF0DD1EACCA6500B575E3 /* AshHue.rgba in Resources */,
+				A8E3AEA91EAE315100073AAA /* Tubaf.png in Resources */,
 				A8CEF0D51EACB26600B575E3 /* VertexShader.glsl in Resources */,
 				A8CEF0DC1EACCA6500B575E3 /* IceHue.rgba in Resources */,
+				A8D42B6B1EAE94BC005E32DB /* Math1.png in Resources */,
 				A8CEF0DF1EACEAC000B575E3 /* TrippyHue.rgba in Resources */,
 				A8CEF0D41EACB26600B575E3 /* FragmentShader.glsl in Resources */,
+				A8D42B691EAE86A8005E32DB /* Mandelbrot.jpg in Resources */,
 				A818469E1EAA2694003A6986 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8E014F91EAE16F40005CEEE /* AdditionalInforViewController.swift in Sources */,
 				A818469B1EAA2694003A6986 /* RenderViewController.swift in Sources */,
 				A81846991EAA2694003A6986 /* AppDelegate.swift in Sources */,
 				A8CEF0D91EACC78100B575E3 /* HueTexture.swift in Sources */,
