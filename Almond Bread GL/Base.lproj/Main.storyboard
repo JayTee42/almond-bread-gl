@@ -270,9 +270,9 @@ Picture by Steve Jurvetson</string>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5n-j3-vac">
                                                             <rect key="frame" x="8" y="901" width="1008" height="122"/>
-                                                            <mutableString key="text">For every complex number c, the corresponding sequence is either bounded and therefore never leaves a certain circle around the origin of the Gaussian plane or it escapes to infinity. The numbers linked to limited sequences form the Mandelbrot set.
+                                                            <string key="text">For every complex number c, the corresponding sequence is either bounded and therefore never leaves a certain circle around the origin of the Gaussian plane or it escapes to infinity. The numbers linked to limited sequences form the Mandelbrot set.
 
-To evaluate the membership of a specific complex number, we need a tractable criterion to decide if the sequence is limited or not. It can actually be proven that crossing the border of the circle with radius 2 is sufficient to escape. Hence, all sequence steps of Mandelbrot members stay inside this circle. In mathematical terms, we obtain:</mutableString>
+To evaluate the membership of a specific complex number, we need a tractable criterion to decide whether the sequence is limited or not. It can actually be proven that crossing the border of the circle with radius 2 is sufficient to escape. Hence, all sequence steps of Mandelbrot members stay inside this circle. In mathematical terms, we obtain:</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -281,7 +281,7 @@ To evaluate the membership of a specific complex number, we need a tractable cri
                                                             <rect key="frame" x="8" y="1183" width="1008" height="203"/>
                                                             <string key="text">The implementation of an OpenGL-based Mandelbrot renderer can be accomplished by assigning a complex number to every pixel on the screen and afterwards evaluating the given criterion. If the corresponding sequence does not surpass the circle of radius 2 in a fixed number of iteration steps, the pixel is considered to belong to the Mandelbrot set. Increasing the number of both pixels and iterations leads to improved quality and accuracy, but also slows down the rendering process.
 
-The Mandelbrot set itself is a binary concept: A point either is part of it or lies on the outside. A more colorful hue can be accomplished by taking the ieration count necessary to surpass the limit of 2 and using it as an offset into a color palette. Every theme in this app possesses such a palette.
+The Mandelbrot set itself is a binary concept: A point is either part of it or lies on the outside. A more colorful hue can be accomplished by taking the ieration count necessary to surpass the limit of 2 and using it as an offset into a color palette. Every theme in this app possesses such a palette.
 
 Everything comes together in the form of an OpenGL fragment shader:</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -492,8 +492,8 @@ func getRandomNumber()
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTq-jl-5DJ">
                                                             <rect key="frame" x="8" y="58" width="1008" height="264"/>
                                                             <string key="text">Freiberg University of Mining and Technology
-Institute of Computer Science
-Chair in Operation Systems and Communication Technology
+Computer Science Institute
+Operating Systems and Communication Technology
 Bernhard-von-Cotta-Straße 2
 09599 Freiberg
 
@@ -502,7 +502,7 @@ Ben Lorenz, M.Sc.
 Richard Weinhold, B.Sc.
 Jonas Treumer, M.Sc.
 
-This project has been developed in the context of the lecture 'Multimedia' hold by Prof. Froitzheim in the summer term of 2017. The source code has been published under the Apache License 2.0.</string>
+This project has been developed in the context of the lecture 'Multimedia' in summer 2017. The source code has been published under the Apache License 2.0.</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
