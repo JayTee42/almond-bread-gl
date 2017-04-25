@@ -270,9 +270,9 @@ Picture by Steve Jurvetson</string>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5n-j3-vac">
                                                             <rect key="frame" x="8" y="901" width="1008" height="122"/>
-                                                            <string key="text">For every complex number c, the corresponding sequence is either limited and therefore never leaves a certain circle around the origin of the Gaussian plane or it escapes to infinity. The numbers linked to limited sequences form the Mandelbrot set.
+                                                            <mutableString key="text">For every complex number c, the corresponding sequence is either bounded and therefore never leaves a certain circle around the origin of the Gaussian plane or it escapes to infinity. The numbers linked to limited sequences form the Mandelbrot set.
 
-To evaluate the membership of a specific complex number, we need a tractable criterion to decide if the sequence is limited or not. It can actually be proven that reaching the border of the circle with radius 2 is sufficient to escape. Hence, all sequence steps of Mandelbrot members stay inside this circle. In mathematical terms, we obtain:</string>
+To evaluate the membership of a specific complex number, we need a tractable criterion to decide if the sequence is limited or not. It can actually be proven that crossing the border of the circle with radius 2 is sufficient to escape. Hence, all sequence steps of Mandelbrot members stay inside this circle. In mathematical terms, we obtain:</mutableString>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
