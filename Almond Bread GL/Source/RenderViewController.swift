@@ -97,6 +97,11 @@ class RenderViewController: UIViewController
         self.view.layoutIfNeeded()
     }
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask
+    {
+        return .all
+    }
+    
     @IBAction func toggleExpandedButtonTouched(sender: UIButton)
     {
         self.isExpanded = !self.isExpanded
