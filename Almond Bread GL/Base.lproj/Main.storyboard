@@ -92,8 +92,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E4d-UX-H23">
-                                <rect key="frame" x="912" y="1320" width="84" height="30"/>
-                                <state key="normal" title="Legal notice"/>
+                                <rect key="frame" x="934" y="1320" width="62" height="30"/>
+                                <state key="normal" title="About us"/>
                                 <connections>
                                     <segue destination="HXt-px-YuF" kind="presentation" modalPresentationStyle="overCurrentContext" id="Irg-1S-yHe"/>
                                 </connections>
