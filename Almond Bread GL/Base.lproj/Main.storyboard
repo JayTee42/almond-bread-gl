@@ -270,20 +270,20 @@ Picture by Steve Jurvetson</string>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5n-j3-vac">
                                                             <rect key="frame" x="8" y="901" width="1008" height="122"/>
-                                                            <mutableString key="text">For every complex number c, the corresponding sequence is either limited and therefore never leaves a certain circle around the origin of the Gaussian plane or it escapes to infinity. The numbers linked to limited sequences form the Mandelbrot set.
+                                                            <string key="text">For every complex number c, the corresponding sequence is either limited and therefore never leaves a certain circle around the origin of the Gaussian plane or it escapes to infinity. The numbers linked to limited sequences form the Mandelbrot set.
 
-To evaluate the membership of a specific complex number, we need a tractable criterion to decide if the sequence is limited or not. It can actually be proven that reaching the border of the circle with radius 2 is sufficient to escape. Hence, all sequence steps of Mandelbrot members stay inside this circle. In mathematical terms, we obtain:</mutableString>
+To evaluate the membership of a specific complex number, we need a tractable criterion to decide if the sequence is limited or not. It can actually be proven that reaching the border of the circle with radius 2 is sufficient to escape. Hence, all sequence steps of Mandelbrot members stay inside this circle. In mathematical terms, we obtain:</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mch-WZ-7a3">
                                                             <rect key="frame" x="8" y="1183" width="1008" height="203"/>
-                                                            <mutableString key="text">The implementation of an OpenGL-based Mandelbrot renderer can be accomplished by assigning a complex number to every pixel on the screen and afterwards evaluating the given criterion. If the corresponding sequence does not surpass the circle of radius 2 in a fixed number of iteration steps, the pixel is considered to belong to the Mandelbrot set. Increasing the number of both pixels and iterations leads to improved quality and accuracy, but also slows down the rendering process.
+                                                            <string key="text">The implementation of an OpenGL-based Mandelbrot renderer can be accomplished by assigning a complex number to every pixel on the screen and afterwards evaluating the given criterion. If the corresponding sequence does not surpass the circle of radius 2 in a fixed number of iteration steps, the pixel is considered to belong to the Mandelbrot set. Increasing the number of both pixels and iterations leads to improved quality and accuracy, but also slows down the rendering process.
 
 The Mandelbrot set itself is a binary concept: A point either is part of it or lies on the outside. A more colorful hue can be accomplished by taking the ieration count necessary to surpass the limit of 2 and using it as an offset into a color palette. Every theme in this app possesses such a palette.
 
-Everything comes together in the form of an OpenGL fragment shader:</mutableString>
+Everything comes together in the form of an OpenGL fragment shader:</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -360,18 +360,19 @@ func getRandomNumber()
                                                         <constraint firstItem="ee0-As-hay" firstAttribute="top" secondItem="h1A-vT-qim" secondAttribute="bottom" id="SFa-fh-iCA"/>
                                                         <constraint firstItem="9dD-xX-uMZ" firstAttribute="leading" secondItem="SAh-gS-8e2" secondAttribute="leading" id="TVb-kH-Cif"/>
                                                         <constraint firstItem="0lp-3D-zuS" firstAttribute="trailing" secondItem="2Y2-7K-tfk" secondAttribute="trailing" id="Win-u6-y4K"/>
+                                                        <constraint firstItem="bAd-zO-RaU" firstAttribute="trailing" secondItem="Mch-WZ-7a3" secondAttribute="trailing" id="X3E-dO-REK"/>
                                                         <constraint firstItem="CAB-ON-R56" firstAttribute="trailing" secondItem="TI0-Za-cjq" secondAttribute="trailing" id="Xsw-43-Sd6"/>
                                                         <constraint firstItem="xfW-ef-jsO" firstAttribute="trailing" secondItem="Mch-WZ-7a3" secondAttribute="trailing" id="YkM-zo-gBn"/>
                                                         <constraint firstItem="TI0-Za-cjq" firstAttribute="top" secondItem="M1f-aR-3tS" secondAttribute="topMargin" id="bju-nI-vOZ"/>
                                                         <constraint firstItem="h1A-vT-qim" firstAttribute="trailing" secondItem="CAB-ON-R56" secondAttribute="trailing" id="byi-gW-Nxl"/>
                                                         <constraint firstItem="0lp-3D-zuS" firstAttribute="leading" secondItem="2Y2-7K-tfk" secondAttribute="leading" id="cbB-uj-lgA"/>
-                                                        <constraint firstItem="bAd-zO-RaU" firstAttribute="width" secondItem="M1f-aR-3tS" secondAttribute="width" multiplier="0.75" id="dAk-GV-5Q2"/>
                                                         <constraint firstItem="9dD-xX-uMZ" firstAttribute="trailing" secondItem="SAh-gS-8e2" secondAttribute="trailing" id="dEx-Eb-sme"/>
                                                         <constraint firstItem="CAB-ON-R56" firstAttribute="top" secondItem="TI0-Za-cjq" secondAttribute="bottom" constant="8" symbolic="YES" id="di0-3U-AWq"/>
                                                         <constraint firstItem="Yow-f7-nik" firstAttribute="leading" secondItem="L5n-j3-vac" secondAttribute="leading" id="dwy-w8-cfr"/>
                                                         <constraint firstItem="Mch-WZ-7a3" firstAttribute="trailing" secondItem="Yow-f7-nik" secondAttribute="trailing" id="eWp-jd-nQ2"/>
                                                         <constraint firstItem="CAB-ON-R56" firstAttribute="leading" secondItem="TI0-Za-cjq" secondAttribute="leading" id="ew0-Df-ZUa"/>
                                                         <constraint firstItem="L5n-j3-vac" firstAttribute="leading" secondItem="2Y2-7K-tfk" secondAttribute="leading" id="ffP-J5-c1b"/>
+                                                        <constraint firstItem="bAd-zO-RaU" firstAttribute="leading" secondItem="Mch-WZ-7a3" secondAttribute="leading" id="fxL-UP-fBa"/>
                                                         <constraint firstItem="urJ-2X-T7l" firstAttribute="centerX" secondItem="M1f-aR-3tS" secondAttribute="centerX" id="gnl-wm-brJ"/>
                                                         <constraint firstItem="DCa-KS-QWn" firstAttribute="top" secondItem="CAB-ON-R56" secondAttribute="bottom" constant="8" symbolic="YES" id="jlx-sc-cjn"/>
                                                         <constraint firstItem="xfW-ef-jsO" firstAttribute="leading" secondItem="Mch-WZ-7a3" secondAttribute="leading" id="kWe-eK-yIB"/>
@@ -383,11 +384,30 @@ func getRandomNumber()
                                                         <constraint firstItem="L5n-j3-vac" firstAttribute="top" secondItem="0lp-3D-zuS" secondAttribute="bottom" constant="20" id="shP-3r-doa"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="DCa-KS-QWn" secondAttribute="trailing" id="ubG-Pv-XjF"/>
                                                         <constraint firstItem="2Y2-7K-tfk" firstAttribute="top" secondItem="9dD-xX-uMZ" secondAttribute="bottom" constant="8" symbolic="YES" id="v71-5E-7So"/>
+                                                        <constraint firstItem="bAd-zO-RaU" firstAttribute="width" secondItem="M1f-aR-3tS" secondAttribute="width" multiplier="0.75" id="vwj-qQ-k8P"/>
                                                         <constraint firstItem="ee0-As-hay" firstAttribute="centerX" secondItem="M1f-aR-3tS" secondAttribute="centerX" id="wq6-9W-Ny6"/>
                                                         <constraint firstItem="2Y2-7K-tfk" firstAttribute="leading" secondItem="9dD-xX-uMZ" secondAttribute="leading" id="yYA-i7-Ejq"/>
                                                         <constraint firstItem="dYC-rJ-DXo" firstAttribute="leading" secondItem="Mch-WZ-7a3" secondAttribute="leading" id="ygP-Yl-aam"/>
                                                         <constraint firstItem="jVy-fU-l19" firstAttribute="trailing" secondItem="L5n-j3-vac" secondAttribute="trailing" id="yxt-mp-sXp"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="X3E-dO-REK"/>
+                                                            <exclude reference="fxL-UP-fBa"/>
+                                                            <exclude reference="vwj-qQ-k8P"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="X3E-dO-REK"/>
+                                                            <include reference="fxL-UP-fBa"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=regular">
+                                                        <mask key="constraints">
+                                                            <include reference="vwj-qQ-k8P"/>
+                                                        </mask>
+                                                    </variation>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -461,7 +481,7 @@ func getRandomNumber()
                                             <rect key="frame" x="0.0" y="20" width="1024" height="1276"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbC-4d-lnd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="555.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="690"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mandelbrot-GL" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6B-dm-rGs">
                                                             <rect key="frame" x="8" y="8" width="1008" height="42"/>
@@ -488,13 +508,13 @@ This project has been developed in the context of the lecture 'Multimedia' hold 
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tubaf.png" translatesAutoresizingMaskIntoConstraints="NO" id="tVh-q5-wFE">
-                                                            <rect key="frame" x="8" y="397.5" width="1008" height="150"/>
+                                                            <rect key="frame" x="8" y="532" width="1008" height="150"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="150" id="sMI-Dq-h11"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ifi.png" translatesAutoresizingMaskIntoConstraints="NO" id="HFD-6G-04S">
-                                                            <rect key="frame" x="8" y="347.5" width="1008" height="30"/>
+                                                            <rect key="frame" x="8" y="382" width="1008" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="f4v-EI-1um"/>
                                                             </constraints>
@@ -505,8 +525,8 @@ This project has been developed in the context of the lecture 'Multimedia' hold 
                                                         <constraint firstItem="HFD-6G-04S" firstAttribute="leading" secondItem="hTq-jl-5DJ" secondAttribute="leading" id="9B9-Ar-Pie"/>
                                                         <constraint firstItem="hTq-jl-5DJ" firstAttribute="leading" secondItem="v6B-dm-rGs" secondAttribute="leading" id="Dlz-dJ-WPg"/>
                                                         <constraint firstItem="HFD-6G-04S" firstAttribute="trailing" secondItem="hTq-jl-5DJ" secondAttribute="trailing" id="Eet-p8-2vc"/>
-                                                        <constraint firstItem="HFD-6G-04S" firstAttribute="top" secondItem="hTq-jl-5DJ" secondAttribute="bottom" constant="25.5" id="Gag-Rq-DaU"/>
-                                                        <constraint firstItem="tVh-q5-wFE" firstAttribute="top" secondItem="HFD-6G-04S" secondAttribute="bottom" constant="20" id="SV9-ph-gPk"/>
+                                                        <constraint firstItem="HFD-6G-04S" firstAttribute="top" secondItem="hTq-jl-5DJ" secondAttribute="bottom" constant="60" id="Gag-Rq-DaU"/>
+                                                        <constraint firstItem="tVh-q5-wFE" firstAttribute="top" secondItem="HFD-6G-04S" secondAttribute="bottom" constant="120" id="SV9-ph-gPk"/>
                                                         <constraint firstItem="tVh-q5-wFE" firstAttribute="trailing" secondItem="HFD-6G-04S" secondAttribute="trailing" id="WOn-PA-jOk"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="tVh-q5-wFE" secondAttribute="bottom" id="aXE-sG-0ZW"/>
                                                         <constraint firstItem="hTq-jl-5DJ" firstAttribute="top" secondItem="v6B-dm-rGs" secondAttribute="bottom" constant="8" symbolic="YES" id="e8D-j1-b9c"/>
