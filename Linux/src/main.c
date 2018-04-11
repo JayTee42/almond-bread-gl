@@ -552,7 +552,7 @@ int main(void)
 
     user_info.scale = MIN_SCALE;
 
-    user_info.iterations = 100;
+    user_info.iterations = 500;
 
     //Create a GLFW window:
     GLFWwindow* window = create_glfw_window(&user_info);
@@ -661,7 +661,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	switch (key)
 	{
 	//Manage iterations:
-	case GLFW_KEY_KP_ADD:      user_info->iterations = MIN(user_info->iterations + 1, MAX_ITERATIONS); break;
+	case GLFW_KEY_KP_ADD: user_info->iterations = MIN(user_info->iterations + 1, MAX_ITERATIONS); break;
 	case GLFW_KEY_KP_SUBTRACT: user_info->iterations = MAX(user_info->iterations - 1, MIN_ITERATIONS); break;
 
 	//Bind different textures:
