@@ -1,4 +1,4 @@
-#version 420
+#version 410
 
 //Input:
 in highp vec2 c;

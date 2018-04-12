@@ -171,7 +171,11 @@ GLFWwindow* create_glfw_window(user_info_t* user_info)
 
 	//We want at least a 4.2 context:
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+
+    //Enable forward-compatibility and use the core profile:
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     //No depth and stencil buffer:
     glfwWindowHint(GLFW_DEPTH_BITS, 0);
@@ -461,10 +465,7 @@ GLuint create_hue_texture(const char* file_path)
     check_error(dbg_domain, "Failed to set wrapping for t");
 
     //Provide the bytes:
-    glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGBA8, pixels_count, 1);
-    check_error(dbg_domain, "Failed to specify texture storage (2D)");
-    
-    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, pixels_count, 1, GL_RGBA, GL_UNSIGNED_BYTE, (const GLvoid*)texture_data);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, pixels_count, 1, 0, GL_RGBA, GL_UNSIGNED_BYTE, (const GLvoid*)texture_data);
     check_error(dbg_domain, "Failed to push texture data (2D)");
 
     //Free the texture data:
@@ -661,8 +662,8 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	switch (key)
 	{
 	//Manage iterations:
-	case GLFW_KEY_KP_ADD: user_info->iterations = MIN(user_info->iterations + 1, MAX_ITERATIONS); break;
-	case GLFW_KEY_KP_SUBTRACT: user_info->iterations = MAX(user_info->iterations - 1, MIN_ITERATIONS); break;
+	case GLFW_KEY_UP: user_info->iterations = MIN(user_info->iterations + 10, MAX_ITERATIONS); break;
+	case GLFW_KEY_DOWN: user_info->iterations = MAX(user_info->iterations - 10, MIN_ITERATIONS); break;
 
 	//Bind different textures:
 	case GLFW_KEY_1: bind_texture(user_info->hue_texture_handles[0]); break;
