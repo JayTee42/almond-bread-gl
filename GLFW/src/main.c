@@ -167,9 +167,9 @@ void check_error(const char* dbg_domain, const char* error_text)
 
 GLFWwindow* create_glfw_window(user_info_t* user_info)
 {
-	printf("Creating window ...\n");
+    printf("Creating window ...\n");
 
-	//We want at least a 4.2 context:
+    //We want at least a 4.2 context:
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 
@@ -230,28 +230,24 @@ void init_gl_features()
     check_error(dbg_domain, "Failed to disable dithering");
 }
 
-GLuint init_vertex_data()
+void init_vertex_data(GLuint* vertex_buffer_object, GLuint* vertex_array_object)
 {
 	printf("Uploading vertex data ...\n");
 	const char dbg_domain[] = "Initializing vertex data";
 
 	//Create and bind a dummy VAO (this is actually needed in desktop GL):
-	GLuint vertex_array_object;
-
-	glGenVertexArrays(1, &vertex_array_object);
+	glGenVertexArrays(1, vertex_array_object);
 	check_error(dbg_domain, "Failed to generate VAO");
 
-	glBindVertexArray(vertex_array_object);
+	glBindVertexArray(*vertex_array_object);
 	check_error(dbg_domain, "Failed to bind VAO");
 
     //Generate a VBO:
-    GLuint vertex_buffer_object;
-
-    glGenBuffers(1, &vertex_buffer_object);
+    glGenBuffers(1, vertex_buffer_object);
     check_error(dbg_domain, "Failed to generate VBO");
     
     //Bind it:
-    glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer_object);
+    glBindBuffer(GL_ARRAY_BUFFER, *vertex_buffer_object);
     check_error(dbg_domain, "Failed to bind VBO");
     
     //Create simple vertex data for the corners:
@@ -274,8 +270,6 @@ GLuint init_vertex_data()
     //Specify the vertex data:
     glVertexAttribPointer(VERTEX_DATA_POSITION_ATTRIBUTE, 2, GL_FLOAT, GL_FALSE, sizeof(vertex_data_t), (GLvoid*)offsetof(vertex_data_t, x));
     check_error(dbg_domain, "Failed to specify position attribute");
-
-    return vertex_buffer_object;
 }
 
 GLuint create_shader(GLenum shader_type, const char* file_path)
@@ -578,7 +572,10 @@ int main(void)
     check_error("Initializing", "Failed to specify initial viewport");
 
     //Initialize our vertex data:
-    GLuint vertex_buffer_object = init_vertex_data();
+    GLuint vertex_buffer_object;
+    GLuint vertex_array_object;
+
+    init_vertex_data(&vertex_buffer_object, &vertex_array_object);
 
     //Initialize our shader program and retrieve the uniform locations:
     init_shader_program(&user_info.shader_program);
@@ -608,6 +605,10 @@ int main(void)
     	//Poll window events:
         glfwPollEvents();
     }
+
+    //Delete the VAO:
+    glDeleteVertexArrays(1, &vertex_array_object);
+    check_error("Closing", "Failed to delete vertex array object");
 
     //Delete the VBO:
     glDeleteBuffers(1, &vertex_buffer_object);
