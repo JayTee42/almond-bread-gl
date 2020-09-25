@@ -19,7 +19,7 @@ void main()
 {
     //Set the current position (this is always (-1 | 1)^2):
     gl_Position = position;
-    
+
     //Calculate c:
     c = gaussian_position + (position.xy * gaussian_half_frame);
 }

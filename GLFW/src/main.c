@@ -36,45 +36,45 @@
 
 typedef struct _vertex_data_t_
 {
-	GLfloat x;
-	GLfloat y;
+    GLfloat x;
+    GLfloat y;
 } vertex_data_t;
 
 //The shader program:
 typedef struct _shader_program_t_
 {
-	GLuint handle;
-	GLint gaussian_position_uniform;
-	GLint gaussian_half_frame_uniform;
-	GLint iterations_uniform;
+    GLuint handle;
+    GLint gaussian_position_uniform;
+    GLint gaussian_half_frame_uniform;
+    GLint iterations_uniform;
 } shader_program_t;
 
 //The user info:
 typedef struct _user_info_t
 {
-	//The shader program and the uniforms:
-	shader_program_t shader_program;
+    //The shader program and the uniforms:
+    shader_program_t shader_program;
 
-	//The hue texture handles:
-	GLuint hue_texture_handles[4];
+    //The hue texture handles:
+    GLuint hue_texture_handles[4];
 
-	//The current window size:
-	int window_size[2];
+    //The current window size:
+    int window_size[2];
 
-	//The current cursor position:
-	double cursor_position[2];
+    //The current cursor position:
+    double cursor_position[2];
 
-	//Are we panning?
-	int is_panning;
+    //Are we panning?
+    int is_panning;
 
-	//The current position in the Gaussian plane:
-	double position[2];
+    //The current position in the Gaussian plane:
+    double position[2];
 
-	//The current scale:
-	double scale;
+    //The current scale:
+    double scale;
 
-	//The current interations:
-	int iterations;
+    //The current interations:
+    int iterations;
 } user_info_t;
 
 //Pre-define the callbacks:
@@ -90,78 +90,78 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 //The resulting pointer must be freed!
 int read_all_bytes(const char* file_path, int insert_trailing_zero, uint8_t** ptr)
 {
-	//Try to open the file:
-	FILE* file = fopen(file_path, "rb");
+    //Try to open the file:
+    FILE* file = fopen(file_path, "rb");
 
-	if (!file)
-	{
-		fprintf(stderr, "Failed to open file: %s\n", file_path);
-		exit(EXIT_FAILURE);
-	}
+    if (!file)
+    {
+        fprintf(stderr, "Failed to open file: %s\n", file_path);
+        exit(EXIT_FAILURE);
+    }
 
-	//Seek the end:
-	if (fseek(file, 0, SEEK_END))
-	{
-		fprintf(stderr, "Failed to seek end of file: %s\n", file_path);
-		exit(EXIT_FAILURE);
-	}
+    //Seek the end:
+    if (fseek(file, 0, SEEK_END))
+    {
+        fprintf(stderr, "Failed to seek end of file: %s\n", file_path);
+        exit(EXIT_FAILURE);
+    }
 
-	//Get the file length:
-	int file_length = ftell(file);
-	int buffer_length;
+    //Get the file length:
+    int file_length = ftell(file);
+    int buffer_length;
 
-	//Do we have to insert a trailing zero?
-	if (insert_trailing_zero)
-	{
-		buffer_length = file_length + 1;
-	}
-	else
-	{
-		buffer_length = file_length;
-	}
+    //Do we have to insert a trailing zero?
+    if (insert_trailing_zero)
+    {
+        buffer_length = file_length + 1;
+    }
+    else
+    {
+        buffer_length = file_length;
+    }
 
-	//Rewind the file to the start:
-	rewind(file);
+    //Rewind the file to the start:
+    rewind(file);
 
-	//Allocate space:
-	*ptr = (uint8_t*)malloc(buffer_length);
+    //Allocate space:
+    *ptr = (uint8_t*)malloc(buffer_length);
 
-	if (!*ptr)
-	{
-		fprintf(stderr, "Failed to allocate memory: %d bytes\n", buffer_length);
-		exit(EXIT_FAILURE);
-	}
+    if (!*ptr)
+    {
+        fprintf(stderr, "Failed to allocate memory: %d bytes\n", buffer_length);
+        exit(EXIT_FAILURE);
+    }
 
-	//Read all the bytes:
-	if (fread(*ptr, 1, file_length, file) != file_length)
-	{
-		fprintf(stderr, "Failed to read file contents: %s\n", file_path);
-		exit(EXIT_FAILURE);
-	}
+    //Read all the bytes:
+    if (fread(*ptr, 1, file_length, file) != file_length)
+    {
+        fprintf(stderr, "Failed to read file contents: %s\n", file_path);
+        exit(EXIT_FAILURE);
+    }
 
-	//Close the file:
-	fclose(file);
+    //Close the file:
+    fclose(file);
 
-	//Set the trailing zero:
-	if (insert_trailing_zero)
-	{
-		(*ptr)[buffer_length - 1] = 0;
-	}
+    //Set the trailing zero:
+    if (insert_trailing_zero)
+    {
+        (*ptr)[buffer_length - 1] = 0;
+    }
 
-	return buffer_length;
+    return buffer_length;
 }
 
 //Check for an OpenGL error if we are not debugging:
 void check_error(const char* dbg_domain, const char* error_text)
 {
 #ifdef DEBUG
-	GLenum error = glGetError();
+    GLenum error = glGetError();
 
-	if (error != GL_NO_ERROR)
-	{
-		printf("[%s] %s: %d\n", dbg_domain, error_text, error);
-		exit(EXIT_FAILURE);
-	}
+    if (error != GL_NO_ERROR)
+    {
+        printf("[%s] %s: %d\n", dbg_domain, error_text, error);
+        exit(EXIT_FAILURE);
+    }
 #endif
 }
 
@@ -186,7 +186,7 @@ GLFWwindow* create_glfw_window(user_info_t* user_info)
 
     if (!window)
     {
-    	fprintf(stderr, "Failed to create window.\n");
+        fprintf(stderr, "Failed to create window.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -203,28 +203,28 @@ GLFWwindow* create_glfw_window(user_info_t* user_info)
 
 void init_gl_features()
 {
-	printf("Initializing some GL features ...\n");
-	const char dbg_domain[] = "Initializing GL features";
+    printf("Initializing some GL features ...\n");
+    const char dbg_domain[] = "Initializing GL features";
 
     //Disable alpha blending:
     glDisable(GL_BLEND);
     check_error(dbg_domain, "Failed to disable alpha blending");
-    
+
     //Disable the depth test:
     glDisable(GL_DEPTH_TEST);
     check_error(dbg_domain, "Failed to disable the depth test");
-    
+
     glDepthMask(GL_FALSE);
     check_error(dbg_domain, "Failed to disable the depth mask");
-    
+
     //Disable the scissor test:
     glDisable(GL_SCISSOR_TEST);
     check_error(dbg_domain, "Failed to disable the scissor test");
-    
+
     //Disable the stencil test:
     glDisable(GL_STENCIL_TEST);
     check_error(dbg_domain, "Failed to disable the stencil test");
-    
+
     //Disable dithering:
     glDisable(GL_DITHER);
     check_error(dbg_domain, "Failed to disable dithering");
@@ -232,41 +232,41 @@ void init_gl_features()
 
 void init_vertex_data(GLuint* vertex_buffer_object, GLuint* vertex_array_object)
 {
-	printf("Uploading vertex data ...\n");
-	const char dbg_domain[] = "Initializing vertex data";
+    printf("Uploading vertex data ...\n");
+    const char dbg_domain[] = "Initializing vertex data";
 
-	//Create and bind a dummy VAO (this is actually needed in desktop GL):
-	glGenVertexArrays(1, vertex_array_object);
-	check_error(dbg_domain, "Failed to generate VAO");
+    //Create and bind a dummy VAO (this is actually needed in desktop GL):
+    glGenVertexArrays(1, vertex_array_object);
+    check_error(dbg_domain, "Failed to generate VAO");
 
-	glBindVertexArray(*vertex_array_object);
-	check_error(dbg_domain, "Failed to bind VAO");
+    glBindVertexArray(*vertex_array_object);
+    check_error(dbg_domain, "Failed to bind VAO");
 
     //Generate a VBO:
     glGenBuffers(1, vertex_buffer_object);
     check_error(dbg_domain, "Failed to generate VBO");
-    
+
     //Bind it:
     glBindBuffer(GL_ARRAY_BUFFER, *vertex_buffer_object);
     check_error(dbg_domain, "Failed to bind VBO");
-    
+
     //Create simple vertex data for the corners:
     vertex_data_t vertex_data[] =
     {
-    	{ .x = -1, .y = -1 },
-    	{ .x = +1, .y = -1 },
-    	{ .x = -1, .y = +1 },
-    	{ .x = +1, .y = +1 }
+        { .x = -1, .y = -1 },
+        { .x = +1, .y = -1 },
+        { .x = -1, .y = +1 },
+        { .x = +1, .y = +1 }
     };
-    
+
     //Upload it:
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertex_data), (const GLvoid*)vertex_data, GL_STATIC_DRAW);
     check_error(dbg_domain, "Failed to buffer vertex data");
-    
+
     //Enable the array:
     glEnableVertexAttribArray(VERTEX_DATA_POSITION_ATTRIBUTE);
     check_error(dbg_domain, "Failed to enable position attribute");
-    
+
     //Specify the vertex data:
     glVertexAttribPointer(VERTEX_DATA_POSITION_ATTRIBUTE, 2, GL_FLOAT, GL_FALSE, sizeof(vertex_data_t), (GLvoid*)offsetof(vertex_data_t, x));
     check_error(dbg_domain, "Failed to specify position attribute");
@@ -274,11 +274,11 @@ void init_vertex_data(GLuint* vertex_buffer_object, GLuint* vertex_array_object)
 
 GLuint create_shader(GLenum shader_type, const char* file_path)
 {
-	const char dbg_domain[] = "Creating shader";
+    const char dbg_domain[] = "Creating shader";
 
-	//Read all the bytes:
-	uint8_t* shader_source;
-	read_all_bytes(file_path, 1, &shader_source);
+    //Read all the bytes:
+    uint8_t* shader_source;
+    read_all_bytes(file_path, 1, &shader_source);
 
     //Create a shader of our type:
     GLuint shader_handle = glCreateShader(shader_type);
@@ -320,89 +320,89 @@ GLuint create_shader(GLenum shader_type, const char* file_path)
 
 void init_shader_program(shader_program_t* shader_program)
 {
-	printf("Compiling shaders ...\n");
-	const char dbg_domain[] = "Initializing shaders";
+    printf("Compiling shaders ...\n");
+    const char dbg_domain[] = "Initializing shaders";
 
     //Create the vertex shader:
     GLuint vertex_shader_handle = create_shader(GL_VERTEX_SHADER, "shaders/vertex_shader.glsl");
-    
+
     //Create the fragment shader:
     GLuint fragment_shader_handle = create_shader(GL_FRAGMENT_SHADER, "shaders/fragment_shader.glsl");
-    
+
     //Create the program:
     shader_program->handle = glCreateProgram();
     check_error(dbg_domain, "Failed to generate shader program handle");
-    
+
     //Attach the shaders:
     glAttachShader(shader_program->handle, vertex_shader_handle);
     check_error(dbg_domain, "Failed to attach vertex shader");
-    
+
     glAttachShader(shader_program->handle, fragment_shader_handle);
     check_error(dbg_domain, "Failed to attach fragment shader");
-    
+
     //Link the program:
     glLinkProgram(shader_program->handle);
     check_error(dbg_domain, "Failed to link shader program");
-    
+
     //Check if we had success:
     GLint linking_success;
-    
+
     glGetProgramiv(shader_program->handle, GL_LINK_STATUS, &linking_success);
     check_error(dbg_domain, "Failed to retrieve shader program parameter");
-    
+
     if (linking_success != (GLint)GL_TRUE)
     {
         //Retrieve the error message:
         char error_message[256];
-        
+
         glGetProgramInfoLog(shader_program->handle, 256, NULL, error_message);
         check_error(dbg_domain, "Failed to retrieve shader program info log");
-        
+
         //Print it and fail:
         fprintf(stderr, "[%s] Failed to link shader program: %s\n", dbg_domain, error_message);
         exit(EXIT_FAILURE);
     }
-    
+
     //After we have linked the program, it's a good idea to detach the shaders from it:
     glDetachShader(shader_program->handle, vertex_shader_handle);
     check_error(dbg_domain, "Failed to detach vertex shader");
-    
+
     glDetachShader(shader_program->handle, fragment_shader_handle);
     check_error(dbg_domain, "Failed to detach fragment shader");
-    
+
     //We don't need the shaders anymore, so we can delete them right here:
     glDeleteShader(vertex_shader_handle);
     check_error(dbg_domain, "Failed to delete vertex shader");
-    
+
     glDeleteShader(fragment_shader_handle);
     check_error(dbg_domain, "Failed to delete fragment shader");
-    
+
     //Use our program from now on:
     glUseProgram(shader_program->handle);
     check_error(dbg_domain, "Failed to enable shader program");
-    
+
     //Retrieve the uniforms:
     shader_program->gaussian_position_uniform = glGetUniformLocation(shader_program->handle, "gaussian_position");
     check_error(dbg_domain, "Failed to retrieve uniform (gaussian_position)");
-    
+
     if (shader_program->gaussian_position_uniform < 0)
     {
         fprintf(stderr, "[%s] Uniform is not available: gaussian_position\n", dbg_domain);
         exit(EXIT_FAILURE);
     }
-    
+
     shader_program->gaussian_half_frame_uniform = glGetUniformLocation(shader_program->handle, "gaussian_half_frame");
     check_error(dbg_domain, "Failed to retrieve uniform (gaussian_half_frame)");
-    
+
     if (shader_program->gaussian_half_frame_uniform < 0)
     {
         fprintf(stderr, "[%s] Uniform is not available: gaussian_half_frame\n", dbg_domain);
         exit(EXIT_FAILURE);
     }
-    
+
     shader_program->iterations_uniform = glGetUniformLocation(shader_program->handle, "iterations");
     check_error(dbg_domain, "Failed to retrieve uniform (iterations)");
-    
+
     if (shader_program->iterations_uniform < 0)
     {
         fprintf(stderr, "[%s] Uniform is not available: iterations\n", dbg_domain);
@@ -412,13 +412,13 @@ void init_shader_program(shader_program_t* shader_program)
     //Set the texture uniform:
     GLint hue_texture_uniform = glGetUniformLocation(shader_program->handle, "hue_texture");
     check_error(dbg_domain, "Failed to retrieve uniform (hueTexture)");
-    
+
     if (hue_texture_uniform < 0)
     {
         fprintf(stderr, "[%s] Uniform is not available: hue_texture_uniform\n", dbg_domain);
         exit(EXIT_FAILURE);
     }
-    
+
     //Assign the value to this uniform (const):
     glUniform1i(hue_texture_uniform, 0);
     check_error(dbg_domain, "Failed to assign to constant uniform (hue_texture_uniform)");
@@ -430,31 +430,31 @@ void init_shader_program(shader_program_t* shader_program)
 
 GLuint create_hue_texture(const char* file_path)
 {
-	const char dbg_domain[] = "Creating texture";
+    const char dbg_domain[] = "Creating texture";
 
-	//Read all the bytes:
-	uint8_t* texture_data;
-	int length = read_all_bytes(file_path, 0, &texture_data);
+    //Read all the bytes:
+    uint8_t* texture_data;
+    int length = read_all_bytes(file_path, 0, &texture_data);
 
-	//How many pixels are there?
-	GLsizei pixels_count = length / 4;
+    //How many pixels are there?
+    GLsizei pixels_count = length / 4;
 
-	//TODO: Check PoT
+    //TODO: Check PoT
 
-	//Generate a texture handle:
-	GLuint texture_handle;
+    //Generate a texture handle:
+    GLuint texture_handle;
 
-	glGenTextures(1, &texture_handle);
-	check_error(dbg_domain, "Failed to generate texture handle");
+    glGenTextures(1, &texture_handle);
+    check_error(dbg_domain, "Failed to generate texture handle");
 
-	//Bind our texture:
-	glBindTexture(GL_TEXTURE_2D, texture_handle);
-	check_error(dbg_domain, "Failed to bind texture");
+    //Bind our texture:
+    glBindTexture(GL_TEXTURE_2D, texture_handle);
+    check_error(dbg_domain, "Failed to bind texture");
 
-	//Set wrapping mode:
+    //Set wrapping mode:
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     check_error(dbg_domain, "Failed to set wrapping for s");
-    
+
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     check_error(dbg_domain, "Failed to set wrapping for t");
 
@@ -468,7 +468,7 @@ GLuint create_hue_texture(const char* file_path)
     //Set min filter:
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     check_error(dbg_domain, "Failed to set texture minification filter");
-    
+
     //Set mag filter:
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     check_error(dbg_domain, "Failed to set texture magnification filter");
@@ -478,12 +478,12 @@ GLuint create_hue_texture(const char* file_path)
 
 void init_textures(GLuint* hue_texture_handles)
 {
-	printf("Uploading textures ...\n");
+    printf("Uploading textures ...\n");
 
     //Activate the texture unit:
     glActiveTexture(GL_TEXTURE0);
     check_error("Initializing textures", "Failed to activate texture unit");
-    
+
     //Create the textures:
     hue_texture_handles[0] = create_hue_texture("textures/fire.rgba");
     hue_texture_handles[1] = create_hue_texture("textures/ice.rgba");
@@ -493,44 +493,44 @@ void init_textures(GLuint* hue_texture_handles)
 
 void bind_texture(GLuint texture_handle)
 {
-	//Bind the new texture:
-	glBindTexture(GL_TEXTURE_2D, texture_handle);
-	check_error("Binding hue texture", "Failed to bind hue texture");
+    //Bind the new texture:
+    glBindTexture(GL_TEXTURE_2D, texture_handle);
+    check_error("Binding hue texture", "Failed to bind hue texture");
 }
 
 void render_frame(user_info_t* user_info)
 {
-	char dbg_domain[] = "Rendering frame";
+    char dbg_domain[] = "Rendering frame";
 
-	//Provide Gaussian position and half frame as uniforms:
-	glUniform2f(user_info->shader_program.gaussian_position_uniform, (GLfloat)(user_info->position[0]), (GLfloat)(user_info->position[1]));
-	check_error(dbg_domain, "Failed to provide uniform (gaussian_position)");
+    //Provide Gaussian position and half frame as uniforms:
+    glUniform2f(user_info->shader_program.gaussian_position_uniform, (GLfloat)(user_info->position[0]), (GLfloat)(user_info->position[1]));
+    check_error(dbg_domain, "Failed to provide uniform (gaussian_position)");
 
-	glUniform2f(user_info->shader_program.gaussian_half_frame_uniform, (GLfloat)((0.5 * user_info->window_size[0]) / user_info->scale), (GLfloat)((0.5 * user_info->window_size[1]) / user_info->scale));
-	check_error(dbg_domain, "Failed to provide uniform (gaussian_half_frame)");
+    glUniform2f(user_info->shader_program.gaussian_half_frame_uniform, (GLfloat)((0.5 * user_info->window_size[0]) / user_info->scale), (GLfloat)((0.5 * user_info->window_size[1]) / user_info->scale));
+    check_error(dbg_domain, "Failed to provide uniform (gaussian_half_frame)");
 
-	glUniform1ui(user_info->shader_program.iterations_uniform, (GLuint)(user_info->iterations));
-	check_error(dbg_domain, "Failed to provide uniform (iterations)");
+    glUniform1ui(user_info->shader_program.iterations_uniform, (GLuint)(user_info->iterations));
+    check_error(dbg_domain, "Failed to provide uniform (iterations)");
 
-	//Clear the renderbuffer with the given clear color:
-	glClear(GL_COLOR_BUFFER_BIT);
-	check_error(dbg_domain, "Failed to clear renderbuffer");
+    //Clear the renderbuffer with the given clear color:
+    glClear(GL_COLOR_BUFFER_BIT);
+    check_error(dbg_domain, "Failed to clear renderbuffer");
 
-	//Draw a full-screen-quad:
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	check_error(dbg_domain, "Failed to draw");
+    //Draw a full-screen-quad:
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    check_error(dbg_domain, "Failed to draw");
 }
 
 int main(void)
 {
-	printf("Hello Mandel-GL!\n");
+    printf("Hello Mandel-GL!\n");
 
-	//Set an error callback to print out all problems from GLFW:
+    //Set an error callback to print out all problems from GLFW:
     glfwSetErrorCallback(error_callback);
 
     if (!glfwInit())
     {
-    	fprintf(stderr, "Failed to initialize GLFW.\n");	
+        fprintf(stderr, "Failed to initialize GLFW.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -596,13 +596,13 @@ int main(void)
     //Enter the render loop:
     while (!glfwWindowShouldClose(window))
     {
-    	//Render a frame:
-    	render_frame(&user_info);
+        //Render a frame:
+        render_frame(&user_info);
 
-    	//Swap the buffers:
-    	glfwSwapBuffers(window);
+        //Swap the buffers:
+        glfwSwapBuffers(window);
 
-    	//Poll window events:
+        //Poll window events:
         glfwPollEvents();
     }
 
@@ -635,79 +635,85 @@ int main(void)
 //All the callbacks:
 void error_callback(int error, const char* description)
 {
-	fprintf(stderr, "GLFW error: %s\n", description);
+    fprintf(stderr, "GLFW error: %s\n", description);
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
-	//Apply as the new viewport:
-	glViewport(0, 0, width, height);
-	check_error("Changing viewport size", "Failed to specify new viewport");
+    //Apply as the new viewport:
+    glViewport(0, 0, width, height);
+    check_error("Changing viewport size", "Failed to specify new viewport");
 }
 
 void window_size_callback(GLFWwindow* window, int width, int height)
 {
-	//Get the user info:
-	user_info_t* user_info = (user_info_t*)glfwGetWindowUserPointer(window);
+    //Get the user info:
+    user_info_t* user_info = (user_info_t*)glfwGetWindowUserPointer(window);
 
-	//Update width and height:
-	user_info->window_size[0] = width;
-	user_info->window_size[1] = height;
+    //Update width and height:
+    user_info->window_size[0] = width;
+    user_info->window_size[1] = height;
+
+    //Render an updated frame (necessary on some OS, e.g. macOS):
+    render_frame(user_info);
+
+    //Swap the buffers:
+    glfwSwapBuffers(window);
 }
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	//Get the user info:
-	user_info_t* user_info = (user_info_t*)glfwGetWindowUserPointer(window);
+    //Get the user info:
+    user_info_t* user_info = (user_info_t*)glfwGetWindowUserPointer(window);
 
-	switch (key)
-	{
-	//Manage iterations:
-	case GLFW_KEY_UP: user_info->iterations = MIN(user_info->iterations + 10, MAX_ITERATIONS); break;
-	case GLFW_KEY_DOWN: user_info->iterations = MAX(user_info->iterations - 10, MIN_ITERATIONS); break;
+    switch (key)
+    {
+    //Manage iterations:
+    case GLFW_KEY_UP: user_info->iterations = MIN(user_info->iterations + 10, MAX_ITERATIONS); break;
+    case GLFW_KEY_DOWN: user_info->iterations = MAX(user_info->iterations - 10, MIN_ITERATIONS); break;
 
-	//Bind different textures:
-	case GLFW_KEY_1: bind_texture(user_info->hue_texture_handles[0]); break;
-	case GLFW_KEY_2: bind_texture(user_info->hue_texture_handles[1]); break;
-	case GLFW_KEY_3: bind_texture(user_info->hue_texture_handles[2]); break;
-	case GLFW_KEY_4: bind_texture(user_info->hue_texture_handles[3]); break;
-	}
+    //Bind different textures:
+    case GLFW_KEY_1: bind_texture(user_info->hue_texture_handles[0]); break;
+    case GLFW_KEY_2: bind_texture(user_info->hue_texture_handles[1]); break;
+    case GLFW_KEY_3: bind_texture(user_info->hue_texture_handles[2]); break;
+    case GLFW_KEY_4: bind_texture(user_info->hue_texture_handles[3]); break;
+    }
 }
 
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 {
-	//Get the user info:
-	user_info_t* user_info = (user_info_t*)glfwGetWindowUserPointer(window);
+    //Get the user info:
+    user_info_t* user_info = (user_info_t*)glfwGetWindowUserPointer(window);
 
-	//Start / stop panning:
-	if (button == GLFW_MOUSE_BUTTON_LEFT)
-	{
-		user_info->is_panning = (action == GLFW_PRESS);
-	}
+    //Start / stop panning:
+    if (button == GLFW_MOUSE_BUTTON_LEFT)
+    {
+        user_info->is_panning = (action == GLFW_PRESS);
+    }
 }
 
 void cursor_pos_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
-	//Get the user info:
-	user_info_t* user_info = (user_info_t*)glfwGetWindowUserPointer(window);
+    //Get the user info:
+    user_info_t* user_info = (user_info_t*)glfwGetWindowUserPointer(window);
 
-	//Are we panning?
-	if (user_info->is_panning)
-	{
-		user_info->position[0] = CLAMPED_POSITION(user_info->position[0] - ((xoffset - user_info->cursor_position[0]) / user_info->scale));
-		user_info->position[1] = CLAMPED_POSITION(user_info->position[1] + ((yoffset - user_info->cursor_position[1]) / user_info->scale));
-	}
+    //Are we panning?
+    if (user_info->is_panning)
+    {
+        user_info->position[0] = CLAMPED_POSITION(user_info->position[0] - ((xoffset - user_info->cursor_position[0]) / user_info->scale));
+        user_info->position[1] = CLAMPED_POSITION(user_info->position[1] + ((yoffset - user_info->cursor_position[1]) / user_info->scale));
+    }
 
-	//Save the new position:
-	user_info->cursor_position[0] = xoffset;
-	user_info->cursor_position[1] = yoffset;
+    //Save the new position:
+    user_info->cursor_position[0] = xoffset;
+    user_info->cursor_position[1] = yoffset;
 }
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
-	//Get the user info:
-	user_info_t* user_info = (user_info_t*)glfwGetWindowUserPointer(window);
-    
+    //Get the user info:
+    user_info_t* user_info = (user_info_t*)glfwGetWindowUserPointer(window);
+
     //Calculate delta to center:
     double delta_x = user_info->cursor_position[0] - (0.5 * user_info->window_size[0]);
     double delta_y = user_info->cursor_position[1] - (0.5 * user_info->window_size[1]);
@@ -715,10 +721,10 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
     //Convert the cursor position to Gaussian:
     double center_x = user_info->position[0] + (delta_x / user_info->scale);
     double center_y = user_info->position[1] - (delta_y / user_info->scale);
-    
-	//Set the new scale:
-	user_info->scale = CLAMPED_SCALE(pow(2, MOUSE_WHEEL_FACTOR * yoffset) * user_info->scale);
-    
+
+    //Set the new scale:
+    user_info->scale = CLAMPED_SCALE(pow(2, MOUSE_WHEEL_FACTOR * yoffset) * user_info->scale);
+
     //Move the saved Gaussian back to the center point:
     user_info->position[0] = CLAMPED_POSITION(center_x - (delta_x / user_info->scale));
     user_info->position[1] = CLAMPED_POSITION(center_y + (delta_y / user_info->scale));
