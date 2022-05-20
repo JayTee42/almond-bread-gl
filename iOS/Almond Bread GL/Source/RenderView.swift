@@ -8,6 +8,8 @@
 
 import UIKit
 
+// XCode shows many warnings as OpenGL is completely deprecated in favour of Metal :(
+
 class RenderView: UIView, UIGestureRecognizerDelegate
 {
     //Is this a checked (debug) build?

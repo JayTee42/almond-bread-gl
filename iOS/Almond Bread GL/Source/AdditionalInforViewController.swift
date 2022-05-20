@@ -42,12 +42,12 @@ class AdditionalInfoViewController: UIViewController
     
     @IBAction func licenseButtonTouched(sender: UIButton)
     {
-        UIApplication.shared.openURL(URL(string: "https://creativecommons.org/licenses/by/2.0/")!)
+        UIApplication.shared.open(URL(string: "https://creativecommons.org/licenses/by/2.0/")!)
     }
     
     @IBAction func gitButtonTouched(sender: UIButton)
     {
-        UIApplication.shared.openURL(URL(string: "https://github.com/EndoplasmaticReticulum/almond-bread-gl")!)
+        UIApplication.shared.open(URL(string: "https://github.com/EndoplasmaticReticulum/almond-bread-gl")!)
     }
 
     @IBAction func dismissButtonTouched(sender: UIButton)

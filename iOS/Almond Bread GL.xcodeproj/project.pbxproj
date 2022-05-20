@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B96E6EF28378DD4003ABEC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B96E6EE28378DD4003ABEC9 /* Assets.xcassets */; };
 		A818469E1EAA2694003A6986 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A818469C1EAA2694003A6986 /* Main.storyboard */; };
 		A81846A31EAA2694003A6986 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A81846A11EAA2694003A6986 /* LaunchScreen.storyboard */; };
 		A8772C381EAF6CFF008601A4 /* Splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A8772C371EAF6CFF008601A4 /* Splash.jpg */; };
@@ -17,7 +18,6 @@
 		A8772C461EAF7193008601A4 /* RenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8772C3E1EAF7193008601A4 /* RenderView.swift */; };
 		A8772C471EAF7193008601A4 /* RenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8772C3F1EAF7193008601A4 /* RenderViewController.swift */; };
 		A8772C481EAF7193008601A4 /* VertexData.m in Sources */ = {isa = PBXBuildFile; fileRef = A8772C411EAF7193008601A4 /* VertexData.m */; };
-		A87ADD3C1EAF6942007ABFAB /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A87ADD3B1EAF6942007ABFAB /* AppIcon.xcassets */; };
 		A8CEF0D41EACB26600B575E3 /* FragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A8CEF0D21EACB26600B575E3 /* FragmentShader.glsl */; };
 		A8CEF0D51EACB26600B575E3 /* VertexShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = A8CEF0D31EACB26600B575E3 /* VertexShader.glsl */; };
 		A8CEF0D71EACB26C00B575E3 /* FireHue.rgba in Resources */ = {isa = PBXBuildFile; fileRef = A8CEF0D61EACB26C00B575E3 /* FireHue.rgba */; };
@@ -33,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B96E6EE28378DD4003ABEC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Almond Bread GL/Images/Assets.xcassets"; sourceTree = "<group>"; };
 		A81846951EAA2694003A6986 /* Almond Bread GL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Almond Bread GL.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A818469D1EAA2694003A6986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A81846A21EAA2694003A6986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,7 +48,6 @@
 		A8772C3F1EAF7193008601A4 /* RenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RenderViewController.swift; path = Source/RenderViewController.swift; sourceTree = "<group>"; };
 		A8772C401EAF7193008601A4 /* VertexData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VertexData.h; path = Source/VertexData.h; sourceTree = "<group>"; };
 		A8772C411EAF7193008601A4 /* VertexData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VertexData.m; path = Source/VertexData.m; sourceTree = "<group>"; };
-		A87ADD3B1EAF6942007ABFAB /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = AppIcon.xcassets; path = Images/AppIcon.xcassets; sourceTree = "<group>"; };
 		A8CEF0D21EACB26600B575E3 /* FragmentShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FragmentShader.glsl; path = Shaders/FragmentShader.glsl; sourceTree = "<group>"; };
 		A8CEF0D31EACB26600B575E3 /* VertexShader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = VertexShader.glsl; path = Shaders/VertexShader.glsl; sourceTree = "<group>"; };
 		A8CEF0D61EACB26C00B575E3 /* FireHue.rgba */ = {isa = PBXFileReference; lastKnownFileType = file; name = FireHue.rgba; path = Textures/FireHue.rgba; sourceTree = "<group>"; };
@@ -77,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				A81846971EAA2694003A6986 /* Almond Bread GL */,
+				5B96E6EE28378DD4003ABEC9 /* Assets.xcassets */,
 				A81846961EAA2694003A6986 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -181,7 +182,6 @@
 				A8D245191EAEA342005206D7 /* Math2.png */,
 				A8D2451C1EAEBBD6005206D7 /* Ifi.png */,
 				A8E3AEA81EAE315100073AAA /* Tubaf.png */,
-				A87ADD3B1EAF6942007ABFAB /* AppIcon.xcassets */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -226,10 +226,9 @@
 			};
 			buildConfigurationList = A81846901EAA2693003A6986 /* Build configuration list for PBXProject "Almond Bread GL" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -254,7 +253,6 @@
 				A8D2451D1EAEBBD6005206D7 /* Ifi.png in Resources */,
 				A8772C381EAF6CFF008601A4 /* Splash.jpg in Resources */,
 				A8CEF0DD1EACCA6500B575E3 /* AshHue.rgba in Resources */,
-				A87ADD3C1EAF6942007ABFAB /* AppIcon.xcassets in Resources */,
 				A8E3AEA91EAE315100073AAA /* Tubaf.png in Resources */,
 				A8CEF0D51EACB26600B575E3 /* VertexShader.glsl in Resources */,
 				A8D245241EAEC364005206D7 /* ExpandCollapse.png in Resources */,
@@ -263,6 +261,7 @@
 				A8CEF0DF1EACEAC000B575E3 /* PsychedelicHue.rgba in Resources */,
 				A8CEF0D41EACB26600B575E3 /* FragmentShader.glsl in Resources */,
 				A8D42B691EAE86A8005E32DB /* Mandelbrot.jpg in Resources */,
+				5B96E6EF28378DD4003ABEC9 /* Assets.xcassets in Resources */,
 				A818469E1EAA2694003A6986 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

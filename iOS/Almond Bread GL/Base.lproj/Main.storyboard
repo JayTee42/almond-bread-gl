@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad12_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad12_9" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,46 +20,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v3C-ve-5hS">
-                                <rect key="frame" x="126" y="1161" width="825" height="31"/>
+                                <rect key="frame" x="125" y="1158" width="823" height="31"/>
                                 <connections>
                                     <action selector="iterationsSliderValueChangedWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="LAU-qS-8j5"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Iterations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCa-eU-QzA">
-                                <rect key="frame" x="20" y="1165.5" width="100" height="21"/>
+                                <rect key="frame" x="20" y="1162.5" width="99" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xh-xB-sPD">
-                                <rect key="frame" x="957" y="1165" width="47" height="21"/>
+                                <rect key="frame" x="954" y="1162.5" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Render scale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLf-Gu-TwE">
-                                <rect key="frame" x="20" y="1203.5" width="100" height="21"/>
+                                <rect key="frame" x="20" y="1200.5" width="99" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000x" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1eF-5b-N27">
-                                <rect key="frame" x="957" y="1203.5" width="47" height="21"/>
+                                <rect key="frame" x="954" y="1200.5" width="50" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="47" id="UHS-bS-czN"/>
+                                    <constraint firstAttribute="width" constant="50" id="UHS-bS-czN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8o3-Nq-77G">
-                                <rect key="frame" x="126" y="1199" width="825" height="31"/>
+                                <rect key="frame" x="125" y="1196" width="823" height="31"/>
                                 <connections>
                                     <action selector="renderScaleSliderValueChangedWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="xHk-Ye-hIf"/>
                                 </connections>
                             </slider>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tNR-ks-wqY">
-                                <rect key="frame" x="20" y="1276" width="984" height="29"/>
+                                <rect key="frame" x="20" y="1273" width="984" height="32"/>
                                 <segments>
                                     <segment title="First"/>
                                     <segment title="Second"/>
@@ -73,25 +69,25 @@
                                 </connections>
                             </segmentedControl>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0AX-st-eFp">
-                                <rect key="frame" x="955" y="1237" width="51" height="31"/>
+                                <rect key="frame" x="955" y="1234" width="51" height="31"/>
                                 <connections>
                                     <action selector="continuousSlidersSwitchValueChangedWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="Kq7-vJ-xNT"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continuous sliders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4l-Fm-ZiI">
-                                <rect key="frame" x="20" y="1242" width="927" height="21"/>
+                                <rect key="frame" x="20" y="1239" width="927" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hF6-0z-i4v">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hF6-0z-i4v">
                                 <rect key="frame" x="28" y="1320" width="98" height="30"/>
                                 <state key="normal" title="Additional info"/>
                                 <connections>
                                     <segue destination="haN-Af-YW8" kind="presentation" modalPresentationStyle="overCurrentContext" id="neb-if-ae4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E4d-UX-H23">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E4d-UX-H23">
                                 <rect key="frame" x="934" y="1320" width="62" height="30"/>
                                 <state key="normal" title="About us"/>
                                 <connections>
@@ -99,10 +95,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U9b-Fp-Ear" customClass="RenderView" customModule="Almond_Bread_GL" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1146"/>
+                                <rect key="frame" x="0.0" y="20" width="1024" height="1126"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xml-Am-o7b">
-                                        <rect key="frame" x="0.0" y="1100" width="1024" height="30"/>
+                                        <rect key="frame" x="0.0" y="1080" width="1024" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="0sZ-42-OZl"/>
                                         </constraints>
@@ -120,7 +116,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="bCa-eU-QzA" secondAttribute="leading" id="4NH-8j-Y7P"/>
                             <constraint firstItem="8o3-Nq-77G" firstAttribute="leading" secondItem="HLf-Gu-TwE" secondAttribute="trailing" constant="8" symbolic="YES" id="4Oj-gU-grb"/>
@@ -191,7 +187,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIg-n6-wtN">
-                                            <rect key="frame" x="0.0" y="20" width="1024" height="1810"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="1830"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1f-aR-3tS">
                                                     <rect key="frame" x="0.0" y="0.0" width="1024" height="1761.5"/>
@@ -223,7 +219,7 @@ Picture by Steve Jurvetson</string>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ee0-As-hay">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ee0-As-hay">
                                                             <rect key="frame" x="483.5" y="594" width="57" height="27"/>
                                                             <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                                                             <state key="normal" title="CC BY 2.0"/>
@@ -245,31 +241,31 @@ Picture by Steve Jurvetson</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Implementation" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yow-f7-nik">
-                                                            <rect key="frame" x="8" y="1133" width="1008" height="42"/>
+                                                            <rect key="frame" x="8" y="1132.5" width="1008" height="42"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To properly define the Mandelbrot set, one first has to examine the following family of complex recursive sequences:" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Y2-7K-tfk">
-                                                            <rect key="frame" x="8" y="780" width="1008" height="21"/>
+                                                            <rect key="frame" x="8" y="780" width="1008" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Math1.png" translatesAutoresizingMaskIntoConstraints="NO" id="0lp-3D-zuS">
-                                                            <rect key="frame" x="8" y="821" width="1008" height="60"/>
+                                                            <rect key="frame" x="8" y="820.5" width="1008" height="60"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="60" id="cwm-Mv-mxa"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Math2.png" translatesAutoresizingMaskIntoConstraints="NO" id="jVy-fU-l19">
-                                                            <rect key="frame" x="8" y="1043" width="1008" height="30"/>
+                                                            <rect key="frame" x="8" y="1042.5" width="1008" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="QDX-3x-fNx"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5n-j3-vac">
-                                                            <rect key="frame" x="8" y="901" width="1008" height="122"/>
+                                                            <rect key="frame" x="8" y="900.5" width="1008" height="122"/>
                                                             <string key="text">For every complex number c, the corresponding sequence is either bounded and therefore never leaves a certain circle around the origin of the Gaussian plane or it escapes to infinity. The numbers linked to limited sequences form the Mandelbrot set.
 
 To evaluate the membership of a specific complex number, we need a tractable criterion to decide whether the sequence is limited or not. It can actually be proven that crossing the border of the circle with radius 2 is sufficient to escape. Hence, all sequence steps of Mandelbrot members stay inside this circle. In mathematical terms, we obtain:</string>
@@ -278,7 +274,7 @@ To evaluate the membership of a specific complex number, we need a tractable cri
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mch-WZ-7a3">
-                                                            <rect key="frame" x="8" y="1183" width="1008" height="203"/>
+                                                            <rect key="frame" x="8" y="1182.5" width="1008" height="203"/>
                                                             <string key="text">The implementation of an OpenGL-based Mandelbrot renderer can be accomplished by assigning a complex number to every pixel on the screen and afterwards evaluating the given criterion. If the corresponding sequence does not surpass the circle of radius 2 in a fixed number of iteration steps, the pixel is considered to belong to the Mandelbrot set. Increasing the number of both pixels and iterations leads to improved quality and accuracy, but also slows down the rendering process.
 
 The Mandelbrot set itself is a binary concept: A point is either part of it or lies on the outside. A more colorful hue can be accomplished by taking the ieration count necessary to surpass the limit of 2 and using it as an offset into a color palette. Every theme in this app possesses such a palette.
@@ -289,7 +285,7 @@ Everything comes together in the form of an OpenGL fragment shader:</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAd-zO-RaU">
-                                                            <rect key="frame" x="128" y="1406" width="768" height="135"/>
+                                                            <rect key="frame" x="128" y="1405.5" width="768" height="135"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39A-iy-1ow">
                                                                     <rect key="frame" x="8" y="8" width="752" height="119"/>
@@ -315,12 +311,12 @@ func getRandomNumber()
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contributing" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfW-ef-jsO">
-                                                            <rect key="frame" x="8" y="1601" width="1008" height="42"/>
+                                                            <rect key="frame" x="8" y="1600.5" width="1008" height="42"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urJ-2X-T7l">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urJ-2X-T7l">
                                                             <rect key="frame" x="440" y="1711.5" width="144" height="30"/>
                                                             <state key="normal" title="Get the source code!"/>
                                                             <connections>
@@ -419,8 +415,8 @@ func getRandomNumber()
                                                 <constraint firstItem="M1f-aR-3tS" firstAttribute="leading" secondItem="kIg-n6-wtN" secondAttribute="leading" id="zc2-Dx-GPr"/>
                                             </constraints>
                                         </scrollView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqo-u6-WsV" userLabel="Close">
-                                            <rect key="frame" x="491.5" y="1850" width="42" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqo-u6-WsV" userLabel="Close">
+                                            <rect key="frame" x="491" y="1850" width="42" height="30"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="Close"/>
                                             <connections>
@@ -478,10 +474,10 @@ func getRandomNumber()
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojc-pZ-7gT">
-                                            <rect key="frame" x="0.0" y="20" width="1024" height="1276"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="1296"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbC-4d-lnd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="690"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="710.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mandel-GL" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6B-dm-rGs">
                                                             <rect key="frame" x="8" y="8" width="1008" height="42"/>
@@ -490,7 +486,7 @@ func getRandomNumber()
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTq-jl-5DJ">
-                                                            <rect key="frame" x="8" y="58" width="1008" height="264"/>
+                                                            <rect key="frame" x="8" y="58" width="1008" height="284.5"/>
                                                             <string key="text">Freiberg University of Mining and Technology
 Computer Science Institute
 Operating Systems and Communication Technology
@@ -499,8 +495,9 @@ Bernhard-von-Cotta-Straße 2
 
 Prof. Dr. Konrad Froitzheim
 Ben Lorenz, M.Sc.
-Richard Weinhold, B.Sc.
+Richard Weinhold, M.Sc.
 Jonas Treumer, M.Sc.
+Lorenzo Neumann, M.Sc.
 
 This project has been developed in the context of the lecture 'Multimedia' in summer 2017. The source code has been published under the Apache License 2.0.</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -508,13 +505,13 @@ This project has been developed in the context of the lecture 'Multimedia' in su
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tubaf.png" translatesAutoresizingMaskIntoConstraints="NO" id="tVh-q5-wFE">
-                                                            <rect key="frame" x="8" y="532" width="1008" height="150"/>
+                                                            <rect key="frame" x="8" y="552.5" width="1008" height="150"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="150" id="sMI-Dq-h11"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ifi.png" translatesAutoresizingMaskIntoConstraints="NO" id="HFD-6G-04S">
-                                                            <rect key="frame" x="8" y="382" width="1008" height="30"/>
+                                                            <rect key="frame" x="8" y="402.5" width="1008" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="f4v-EI-1um"/>
                                                             </constraints>
@@ -547,7 +544,7 @@ This project has been developed in the context of the lecture 'Multimedia' in su
                                                 <constraint firstAttribute="trailing" secondItem="hbC-4d-lnd" secondAttribute="trailing" id="wIz-CO-bOA"/>
                                             </constraints>
                                         </scrollView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DXR-GR-jnj">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DXR-GR-jnj">
                                             <rect key="frame" x="491" y="1316" width="42" height="30"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="Close"/>
@@ -587,10 +584,13 @@ This project has been developed in the context of the lecture 'Multimedia' in su
     </scenes>
     <resources>
         <image name="ExpandCollapse.png" width="40" height="40"/>
-        <image name="Ifi.png" width="2072" height="140"/>
+        <image name="Ifi.png" width="497.27999877929688" height="33.599998474121094"/>
         <image name="Mandelbrot.jpg" width="1920" height="2729"/>
         <image name="Math1.png" width="235" height="79"/>
         <image name="Math2.png" width="390" height="40"/>
-        <image name="Tubaf.png" width="2858" height="2842"/>
+        <image name="Tubaf.png" width="343" height="341"/>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
