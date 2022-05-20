@@ -91,7 +91,7 @@ class RenderViewController: UIViewController
         
         self.themesSegment.removeAllSegments()
         HueTexture.orderedValues.forEach{ self.themesSegment.insertSegment(withTitle: $0.title, at: self.themesSegment.numberOfSegments, animated: false) }
-        self.themesSegment.selectedSegmentIndex = HueTexture.orderedValues.index(of: RenderViewController.initialTheme)!
+        self.themesSegment.selectedSegmentIndex = HueTexture.orderedValues.firstIndex(of: RenderViewController.initialTheme)!
         
         //Layout:
         self.view.layoutIfNeeded()
