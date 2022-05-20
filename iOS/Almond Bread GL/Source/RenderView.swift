@@ -286,10 +286,10 @@ class RenderView: UIView, UIGestureRecognizerDelegate
         setDisplayLinkEnabled(true)
         
         //Subscribe to app state:
-        NotificationCenter.default.addObserver(self, selector: #selector(appWillResignActive), name: Notification.Name.UIApplicationWillResignActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(appDidBecomeActive), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(appDidEnterBackground), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appWillResignActive), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         
         //Initialize the gesture recognizers:
         initializeGestureRecognizers()
@@ -776,7 +776,7 @@ class RenderView: UIView, UIGestureRecognizerDelegate
         if enabled && (self.displayLink == nil)
         {
             self.displayLink = CADisplayLink(target: self, selector: #selector(displayUpdated(_:)))
-            self.displayLink.add(to: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+            self.displayLink.add(to: RunLoop.current, forMode: .default)
             self.displayLink.isPaused = false
         }
         else if !enabled && (self.displayLink != nil)
@@ -786,7 +786,7 @@ class RenderView: UIView, UIGestureRecognizerDelegate
         }
     }
     
-    func displayUpdated(_ displayLink: CADisplayLink)
+    @objc func displayUpdated(_ displayLink: CADisplayLink)
     {
         let dbgDomain = "Rendering frame"
         
@@ -851,7 +851,7 @@ class RenderView: UIView, UIGestureRecognizerDelegate
         return false
     }
     
-    func panDetected(_ panGR: UIPanGestureRecognizer)
+    @objc func panDetected(_ panGR: UIPanGestureRecognizer)
     {
         defer
         {
@@ -883,7 +883,7 @@ class RenderView: UIView, UIGestureRecognizerDelegate
         }
     }
     
-    func pinchDetected(_ pinchGR: UIPinchGestureRecognizer)
+    @objc func pinchDetected(_ pinchGR: UIPinchGestureRecognizer)
     {
         defer
         {
@@ -924,22 +924,22 @@ class RenderView: UIView, UIGestureRecognizerDelegate
     }
     
     //App states (-> pausing):
-    func appWillResignActive()
+    @objc func appWillResignActive()
     {
         self.isPaused = true
     }
     
-    func appDidBecomeActive()
+    @objc func appDidBecomeActive()
     {
         self.isPaused = false
     }
     
-    func appDidEnterBackground()
+    @objc func appDidEnterBackground()
     {
         self.isPaused = true
     }
     
-    func appWillEnterForeground()
+    @objc func appWillEnterForeground()
     {
         self.isPaused = false
     }
