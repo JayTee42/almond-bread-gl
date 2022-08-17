@@ -1,18 +1,29 @@
 CC = gcc
-CFLAGS = -c -Wall -O3 -Iinclude
-LD = $(CC)
-LDFLAGS = -lm -lglfw
+CCFLAGS = -Wall -O3 -Iinclude -lm -lglfw
+EMCC = emcc
+EMCCFLAGS = -Wall -O3 -Iinclude -s USE_GLFW=3 -s MAX_WEBGL_VERSION=2 --preload-file shaders/ --preload-file textures/
 
-TARGET = mandel-gl
-OBJECTS = $(patsubst %.c, %.o, $(wildcard src/*.c))
+SRC = $(wildcard src/*.c)
+OBJ = $(patsubst %.c, %.o, $(SRC))
 
-all: $(TARGET)
+NAME = mandel-gl
+BIN = $(NAME)
+WEB_HTML = $(NAME).html
+WEB_JS = $(NAME).js
+WEB_WASM = $(NAME).wasm
+WEB_DATA = $(NAME).data
 
-$(TARGET): $(OBJECTS)
-	$(LD) -o $@ $^ $(LDFLAGS)
+.PHONY: all bin web clean
 
-%.o: %.c
-	$(CC) $(CFLAGS) $^ -o $@
+all: bin web
+bin: $(BIN)
+web: $(WEB_HTML)
+
+$(BIN): $(SRC)
+	$(CC) $(CCFLAGS) -o $@ $^
+
+$(WEB_HTML): $(SRC)
+	$(EMCC) $(EMCCFLAGS) -o $@ $^
 
 clean:
-	rm -rf $(TARGET) $(OBJECTS)
+	rm -rf $(OBJ) $(BIN) $(WEB_HTML) $(WEB_JS) $(WEB_WASM) $(WEB_DATA)
